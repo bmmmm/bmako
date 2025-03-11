@@ -46,14 +46,24 @@ class ModuleLoader {
           <h2 class="section-title">Meine Dienstleistungen</h2>
           <div class="services-grid">
             <div class="service-card">
-              <div class="service-icon">💻</div>
+              <div class="service-icon">🍎</div>
               <h3>Apple-Ökosystem</h3>
-              <p>Expertenunterstützung für alle Apple-Geräte wie iPhone, iPad, Mac und Backup-Lösungen.</p>
+              <p>Expertenunterstützung für alle Apple-Geräte wie iPhone, iPad, Mac und Zusammenspiel der Geräte.</p>
             </div>
             <div class="service-card">
-              <div class="service-icon">📊</div>
-              <h3>Office 365</h3>
-              <p>Implementierung und Support für Microsoft Teams, SharePoint und die komplette Office 365-Suite.</p>
+              <div class="service-icon">☁️</div>
+              <h3>Microsoft Cloud</h3>
+              <p>Implementierung und Support für Microsoft Azure, Microsoft Teams, SharePoint und die großer Teil der Office 365-Suite.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">🗄️</div>
+              <h3>Selfhosting</h3>
+              <p>Nutzung von Docker-Container für verschiedene Selfhosting-Lösungen wie Nextcloud, PiHole, HomeAssistant und mehr. Beantwortung von Fragen zu Website-Hosting und Serveradministration.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">🔒</div>
+              <h3>Datenschutz</h3>
+              <p>Beratung zur Auswahl des richtigen E-Mail-Anbieters, Passwortmanagers oder Dokument und Foto Backup-Lösungen. Implementierung datenschutzfreundlicher Technologien für Ihre Privatsphäre.</p>
             </div>
             <div class="service-card">
               <div class="service-icon">🤖</div>
@@ -63,13 +73,24 @@ class ModuleLoader {
             <div class="service-card">
               <div class="service-icon">🏠</div>
               <h3>SmartHome & IoT</h3>
-              <p>Design und Implementierung von Smart-Home-Systemen und Internet der Dinge-Lösungen.</p>
+              <p>Design und Implementierung von Smart-Home-Systemen und Internet der Dinge-Lösungen. Spezieller Fokus auf HomeAssistant, Apple HomeKit, MQTT und Zigbee.</p>
             </div>
             <div class="service-card">
-              <div class="service-icon">🖥️</div>
+              <div class="service-icon">👨‍💻</div>
+              <h3>Coding</h3>
+              <p>Individuelle Programmier-Workshops für Einsteiger und Fortgeschrittene. Beratung zu Python, JavaScript, C und weiteren relevanten Sprachen für Ihre Projekte.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">💻</div>
               <h3>Multi-Plattform-Support</h3>
               <p>Umfassende Unterstützung für Linux, Windows 11, MacOS, Android und iOS-Plattformen.</p>
             </div>
+            <div class="service-card">
+              <div class="service-icon">🖨️</div>
+              <h3>3D-Druck</h3>
+              <p>Unterstützung bei CAD-Konstruktionen mit Fusion 360 und BambuLab. Beratung zur Umsetzung Ihrer 3D-Druck Projekte.</p>
+            </div>
+
           </div>
         </section>
       `,
@@ -81,29 +102,33 @@ class ModuleLoader {
           <div class="about-content">
             <div class="about-card">
               <div class="about-bio">
-                <h3>Beruflicher Hintergrund</h3>
-                <p>Ich bin ein vielseitiger Technologieberater mit Expertise in Apple-Ökosystemen, Microsoft 365, KI-Integration und Smart-Home-Lösungen. Mit einem starken Ingenieursbackground helfe ich Kunden, komplexe technische Herausforderungen zu meistern und effiziente digitale Lösungen zu implementieren.</p>
+                <p>Mit über 15 Jahren Erfahrung im Technologiebereich biete ich fundierte Expertise und innovative Lösungen für moderne digitale Herausforderungen.</p>
+                <p>Als Ingenieur und Technologieberater unterstütze ich Sie bei der Implementierung zukunftsorientierter Systeme und biete maßgeschneiderte Workshops für Unternehmen, Vereine und Privatpersonen an.</p>
               </div>
 
               <div class="about-details-grid">
                 <div class="about-detail-card">
-                  <h3>Name</h3>
-                  <p>Bartosz Makosch</p>
+                  <h3>Projekte</h3>
+                  <ul>
+                    <li><a href="https://bartoszmakosch.com">Private Homepage</a></li>
+                    <li><a href="https://vfcd.org">Verein für coole Dinge e.V.</a></li>
+                    <li><a href="https://bolle-bonn.de">Freie Lastenräder Bonn</a></li>
+                  </ul>
                 </div>
 
                 <div class="about-detail-card">
                   <h3>Ausbildung</h3>
-                  <p>Master of Engineering - Hochschule Mannheim</p>
+                  <p>🎓 Master of Science - Embedded Systems &amp; Medizintechnik - Technische Hochschule Mannheim</p>
                 </div>
 
                 <div class="about-detail-card">
-                  <h3>Kernkompetenz</h3>
-                  <p>Technische Beratung, Systemintegration und digitale Transformation für Unternehmen und Privatpersonen.</p>
+                  <h3>Hobbies</h3>
+                  <p>🚵 Radreisen und 🪴 Gartenarbeit</p>
                 </div>
 
                 <div class="about-detail-card">
                   <h3>Sprachen</h3>
-                  <p>Deutsch, Englisch</p>
+                  <p>🇩🇪 Deutsch, 🇬🇧 Englisch, 🇫🇷 Französisch</p>
                 </div>
               </div>
             </div>
@@ -115,7 +140,7 @@ class ModuleLoader {
       "contact-container": `
         <section id="contact-section" class="section contact-container">
           <h2 class="section-title">Kontakt aufnehmen</h2>
-          <p class="contact-description">Interesse an einer Zusammenarbeit? Kontaktieren Sie mich, um zu besprechen, wie ich Ihnen bei Ihren technischen Anforderungen helfen kann.</p>
+          <p class="contact-description">Haben Sie technische Herausforderungen oder Fragen zu meinen Dienstleistungen? Nehmen Sie Kontakt auf, und lassen Sie uns gemeinsam maßgeschneiderte Lösungen für Ihre individuellen Anforderungen ausarbeiten.</p>
 
           <!-- Contact button that reveals the real email on click -->
           <button id="contact-button" class="button button-center">
@@ -130,6 +155,7 @@ class ModuleLoader {
             </p>
             <p id="email-copy-instruction">Klicken zum Kopieren</p>
           </div>
+
         </section>
       `,
 
@@ -142,6 +168,16 @@ class ModuleLoader {
               <a href="#services-section">Dienstleistungen</a>
               <a href="#about-section">Über mich</a>
               <a href="#contact-section">Kontakt</a>
+              <!-- LinkedIn Social Button -->
+              <div class="social-links">
+                <a href="https://de.linkedin.com/in/bartosz-makosch" target="_blank" rel="noopener noreferrer" class="social-button linkedin-button" aria-label="LinkedIn Profil besuchen">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+
             </nav>
           </div>
         </footer>
