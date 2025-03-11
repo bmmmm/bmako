@@ -126,17 +126,19 @@ class ModuleLoader {
                 </div>
 
                 <div class="about-detail-card">
-                  <h3>Referenzen</h3>
-                  <ul>
-                    <li>Migration der Castelltreff-Infrastruktur zu Microsoft Teams sowie Accountverwaltung in Microsoft Azure</li>
-                    <li>Planung und Design eines Smart-Home-Systems für ein Privathaus</li>
-                  </ul>
-                </div>
-
-                <div class="about-detail-card">
                   <h3>Sprachen</h3>
                   <p>🇩🇪 Deutsch, 🇬🇧 Englisch, 🇫🇷 Französisch</p>
                 </div>
+              </div>
+
+              <!-- Separate references card -->
+              <div class="about-references-card">
+                <h3>Referenzen</h3>
+                <ul>
+                  <li>Migration der Vereins-IT-Infrastruktur zu Microsoft Teams und Implementierung der Benutzerverwaltung in Microsoft Azure</li>
+                  <li>Konzeption und Umsetzung eines integrierten Smart-Home-Systems für ein Wohnobjekt</li>
+                  <li>Installation und Konfiguration eines stationären Zahlungsterminals (Desk/3500 ingenico) mit einem compago Kassensystem</li>
+                </ul>
               </div>
             </div>
           </div>
@@ -147,7 +149,7 @@ class ModuleLoader {
       "contact-container": `
         <section id="contact-section" class="section contact-container">
           <h2 class="section-title">Kontakt aufnehmen</h2>
-          <p class="contact-description">Haben Sie technische Herausforderungen oder Fragen zu meinen Dienstleistungen? Nehmen Sie Kontakt auf, und lassen Sie uns gemeinsam maßgeschneiderte Lösungen für Ihre individuellen Anforderungen finden.</p>
+          <p class="contact-description">Haben Sie technische Herausforderungen oder Fragen zu meinen Dienstleistungen? Nehmen Sie Kontakt auf, und lassen Sie uns gemeinsam maßgeschneiderte Lösungen für Ihre individuellen Anforderungen .</p>
 
           <!-- Contact button that reveals the real email on click -->
           <button id="contact-button" class="button button-center">

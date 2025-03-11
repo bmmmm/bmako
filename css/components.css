@@ -307,15 +307,86 @@ body[data-theme="light"] .sun-icon {
     margin-bottom: 0.75rem;
 }
 
+/* Optimized About Details Grid for any number of items */
 .about-details-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem; /* Increased from 1.5rem to 2rem for more space between cards */
+    width: 100%;
+    margin-bottom: 2.5rem; /* Added space before references card */
 }
 
+/* Base responsive layout (fallback) */
+.about-details-grid {
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(280px, 1fr)
+    ); /* Increased minmax size from 250px to 280px */
+}
+
+/* Special layouts for specific item counts using :has() */
+/* For exactly 1 item */
+.about-details-grid:has(:first-child:last-child) {
+    grid-template-columns: minmax(280px, 3fr);
+    max-width: 600px; /* Increased from 500px */
+    margin: 0 auto 2.5rem auto;
+}
+
+/* For exactly 2 items */
+.about-details-grid:has(:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px; /* Added max-width for 2 items */
+    margin: 0 auto 2.5rem auto;
+}
+
+/* For exactly 3 items */
+.about-details-grid:has(:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1100px; /* Added max-width for 3 items to prevent excessive stretching */
+    margin: 0 auto 2.5rem auto;
+}
+
+/* Fallbacks for browsers without :has() support */
+@supports not (selector(:has(*))) {
+    /* Count-based layouts will be handled by media queries instead */
+
+    /* Large screens - 3 columns */
+    @media (min-width: 950px) {
+        /* Increased from 800px */
+        .about-details-grid {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 1100px;
+            margin: 0 auto 2.5rem auto;
+        }
+    }
+
+    /* Medium screens - 2 columns */
+    @media (min-width: 650px) and (max-width: 949px) {
+        /* Adjusted ranges */
+        .about-details-grid {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 800px;
+            margin: 0 auto 2.5rem auto;
+        }
+    }
+
+    /* Small screens - single column */
+    @media (max-width: 649px) {
+        /* Adjusted from 549px */
+        .about-details-grid {
+            grid-template-columns: 1fr;
+            max-width: 500px;
+            margin: 0 auto 2.5rem auto;
+        }
+    }
+}
+
+/* Make cards stretch to fill their grid area */
 .about-detail-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1.8rem; /* Increased padding from 1.5rem */
     background-color: var(--background-color);
-    padding: 1.5rem;
     border-radius: 8px;
     transition: transform 0.3s ease;
     will-change: transform;
@@ -327,12 +398,65 @@ body[data-theme="light"] .sun-icon {
 
 .about-detail-card h3 {
     color: var(--primary-color);
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.2rem; /* Increased from 1.1rem */
+    margin-bottom: 0.8rem; /* Increased from 0.5rem */
 }
 
-.about-detail-card p {
-    font-size: 0.95rem;
+.about-detail-card p,
+.about-detail-card li {
+    font-size: 1rem; /* Increased from 0.95rem */
+    line-height: 1.5;
+}
+
+.about-detail-card ul {
+    padding-left: 1.2rem;
+}
+
+.about-detail-card li {
+    margin-bottom: 0.7rem;
+}
+
+/* Additional enhancement for single-item case */
+.about-detail-card:only-child {
+    text-align: center;
+}
+
+/* Enhancement for 2-item case on smaller screens */
+@media (max-width: 650px) {
+    .about-details-grid:has(:nth-child(2):last-child) {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto 2rem auto;
+    }
+}
+
+/* References Card */
+.about-references-card {
+    background-color: var(--background-color);
+    padding: 1.8rem; /* Increased from 1.5rem */
+    border-radius: 8px;
+    margin-top: 0; /* Removed top margin since we added bottom margin to grid */
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.about-references-card:hover {
+    transform: translateY(-5px);
+}
+
+.about-references-card h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem; /* Increased from 1.1rem */
+    margin-bottom: 0.8rem; /* Increased from 0.5rem */
+}
+
+.about-references-card ul {
+    padding-left: 1.2rem; /* Adjusted for better readability */
+}
+
+.about-references-card li {
+    margin-bottom: 0.7rem; /* Increased from 0.5rem */
+    line-height: 1.5;
 }
 
 /* Buttons */
