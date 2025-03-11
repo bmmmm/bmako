@@ -1,0 +1,512 @@
+/* Header and Navigation */
+.top-controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+}
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.3s,
+        visibility 0.3s,
+        background-color 0.3s;
+    z-index: 1000;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background: var(--button-hover);
+}
+
+/* Fix for profile image background color */
+.profile-image-front,
+.profile-image-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary-color);
+    background-color: var(--card-color);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    background-color: var(--card-color);
+}
+
+.profile-image-flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: var(--card-color);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+#theme-toggle:active {
+    transform: translateY(0);
+}
+
+#theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--text-color);
+}
+
+body:not([data-theme="dark"]) .moon-icon {
+    display: block;
+}
+
+body:not([data-theme="dark"]) .sun-icon {
+    display: none;
+}
+
+body[data-theme="dark"] .moon-icon {
+    display: none;
+}
+
+body[data-theme="dark"] .sun-icon {
+    display: block;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-top: 3rem;
+}
+
+/* Flipping Profile Image - optimized with will-change */
+.profile-image-container {
+    perspective: 1000px;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    position: relative;
+    will-change: transform;
+}
+
+.profile-image-container:hover {
+    transform: scale(1.02);
+}
+
+.profile-image-container:hover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.profile-image-flipper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.profile-image-container.flipped .profile-image-flipper {
+    transform: rotateY(180deg);
+}
+
+.profile-image-front,
+.profile-image-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--primary-color);
+    background-color: var(--card-color);
+}
+
+.profile-image-back {
+    transform: rotateY(180deg);
+}
+
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-image-container:focus {
+    outline-offset: 4px;
+}
+
+.subtitle {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* Hero Navigation */
+.hero-navigation {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.nav-link {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-color);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Service Cards */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.service-card {
+    background-color: var(--card-color);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition:
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.service-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.service-card p {
+    font-size: 0.9rem;
+}
+
+/* About Section */
+.about-section {
+    padding: 2rem 0;
+}
+
+.about-card {
+    background-color: var(--card-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+.about-bio {
+    margin-bottom: 2rem;
+}
+
+.about-bio h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.75rem;
+}
+
+.about-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.about-detail-card {
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.about-detail-card:hover {
+    transform: translateY(-5px);
+}
+
+.about-detail-card h3 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.about-detail-card p {
+    font-size: 0.95rem;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition:
+        background-color 0.3s ease,
+        transform 0.2s ease;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.button:hover {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.button-center {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+}
+
+/* Contact Section */
+.contact-container {
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.contact-description {
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Add anti-spam protected email styling */
+.email-container {
+    margin: 2rem auto;
+    max-width: 400px;
+    background-color: var(--card-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.email-container.hidden {
+    display: none;
+}
+
+.protected-email {
+    font-family: monospace;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background-color: var(--background-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.protected-email:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#email-copy-instruction {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.email-copied {
+    background-color: var(--secondary-color) !important;
+    color: white;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Fade in animation for scroll effects */
+.fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+/* Responsive component adjustments */
+@media (max-width: 768px) {
+    .top-controls {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .profile-image-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .services-grid,
+    .about-details-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .hero-navigation {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .button-center {
+        max-width: 80%;
+    }
+
+    header .top-controls {
+        position: relative;
+        top: 0;
+        right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .services-grid,
+    .about-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-card {
+        padding: 1.5rem;
+    }
+
+    .footer-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
