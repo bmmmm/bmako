@@ -1,6 +1,5 @@
 /**
- * Module Loader - Optimized for performance
- * Dynamically loads HTML components with efficient DOM operations
+ * Module Loader - Dynamically loads HTML components
  */
 class ModuleLoader {
   constructor() {
@@ -41,7 +40,7 @@ class ModuleLoader {
         </div>
       `,
 
-      // Services Component (remaining components unchanged...)
+      // Services Component
       "services-container": `
         <section id="services-section" class="section services">
           <h2 class="section-title">Meine Dienstleistungen</h2>
@@ -185,80 +184,46 @@ class ModuleLoader {
                   <span>LinkedIn</span>
                 </a>
               </div>
+
             </nav>
           </div>
         </footer>
       `,
     };
-
-    // Pre-create DOM parser for better performance
-    this.parser = new DOMParser();
   }
 
-  // Load all modules with performance optimizations
+  // Load all modules on the page
   loadModules() {
-    // Get all container elements at once to minimize DOM queries
-    const containers = {};
-    for (const id of Object.keys(this.modules)) {
-      containers[id] = document.getElementById(id);
-    }
-
-    // Batch DOM operations with DocumentFragment and requestAnimationFrame
-    requestAnimationFrame(() => {
-      for (const [id, html] of Object.entries(this.modules)) {
-        const container = containers[id];
-        if (!container) continue;
-
-        // Parse HTML once outside the DOM
-        const fragment = document.createDocumentFragment();
-        const temp = document.createElement("div");
-        temp.innerHTML = html.trim();
-
-        // Move all nodes to fragment
-        while (temp.firstChild) {
-          fragment.appendChild(temp.firstChild);
-        }
-
-        // Single DOM insert
-        container.appendChild(fragment);
+    for (const [id, html] of Object.entries(this.modules)) {
+      const container = document.getElementById(id);
+      if (container) {
+        // Use a more efficient way to set innerHTML (createContextualFragment)
+        const template = document.createElement("template");
+        template.innerHTML = html.trim();
+        container.appendChild(template.content.cloneNode(true));
       }
-    });
+    }
   }
 
-  // Add or update a module
+  // Add a new module or update an existing one
   addModule(id, html) {
     this.modules[id] = html;
 
-    // Update DOM if container exists
+    // If the container exists on the current page, update it immediately
     const container = document.getElementById(id);
-    if (!container) return;
+    if (container) {
+      const template = document.createElement("template");
+      template.innerHTML = html.trim();
 
-    // More efficient DOM update with requestAnimationFrame
-    requestAnimationFrame(() => {
-      // Create document fragment
-      const fragment = document.createDocumentFragment();
-      const temp = document.createElement("div");
-      temp.innerHTML = html.trim();
-
-      // Move all nodes to fragment
-      while (temp.firstChild) {
-        fragment.appendChild(temp.firstChild);
-      }
-
-      // Clear and update in a single reflow
+      // Clear existing content and add new content
       container.innerHTML = "";
-      container.appendChild(fragment);
-    });
+      container.appendChild(template.content.cloneNode(true));
+    }
   }
 }
 
-// Initialize with performance optimization
+// Initialize and load modules when DOM is ready
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize module loader
   window.moduleLoader = new ModuleLoader();
-
-  // Use requestAnimationFrame for non-blocking load
-  requestAnimationFrame(() => {
-    window.moduleLoader.loadModules();
-  });
+  window.moduleLoader.loadModules();
 });
