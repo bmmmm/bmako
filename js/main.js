@@ -19,26 +19,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to set up the anti-spam contact protection
   function setupContactProtection() {
+    const contactButton = document.getElementById("contact-button");
+    const emailContainer = document.getElementById("email-container");
+
+    // Only proceed if both elements exist
+    if (!contactButton || !emailContainer) return;
+
     // Use event delegation for better performance
     document.addEventListener("click", (e) => {
-      const contactButton = e.target.closest("#contact-button");
+      const clickedContactButton = e.target.closest("#contact-button");
       const protectedEmail = e.target.closest(".protected-email");
 
-      if (contactButton) {
-        const emailContainer = document.getElementById("email-container");
-        if (emailContainer) {
-          // Set up real email parts (these are split to make it harder for bots)
-          const emailPart1 = document.getElementById("email-part1");
-          const emailPart2 = document.getElementById("email-part2");
+      if (clickedContactButton) {
+        // Set up real email parts (these are split to make it harder for bots)
+        const emailPart1 = document.getElementById("email-part1");
+        const emailPart2 = document.getElementById("email-part2");
 
-          if (emailPart1 && emailPart2) {
-            emailPart1.textContent = "hi";
-            emailPart2.textContent = "bmako.de";
-          }
-
-          emailContainer.classList.remove("hidden");
-          contactButton.classList.add("hidden");
+        if (emailPart1 && emailPart2) {
+          emailPart1.textContent = "hi";
+          emailPart2.textContent = "bmako.de";
         }
+
+        emailContainer.classList.remove("hidden");
+        contactButton.classList.add("hidden");
       } else if (protectedEmail) {
         const emailPart1 = document.getElementById("email-part1");
         const emailPart2 = document.getElementById("email-part2");
@@ -76,6 +79,34 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
       }
+    });
+
+    // Add scroll event listener to hide email container when scrolling away
+    let scrollTimeout;
+    window.addEventListener("scroll", () => {
+      // Clear previous timeout if it exists
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+
+      // Set a new timeout to avoid performance issues with scroll events
+      scrollTimeout = setTimeout(() => {
+        // Check if email container is visible and if we've scrolled significantly
+        if (!emailContainer.classList.contains("hidden")) {
+          // Get the contact section position
+          const contactSection = document.getElementById("contact-section");
+          if (contactSection) {
+            const rect = contactSection.getBoundingClientRect();
+
+            // If we've scrolled the contact section mostly out of view
+            if (rect.top < -100 || rect.bottom > window.innerHeight + 100) {
+              // Hide email container and show contact button again
+              emailContainer.classList.add("hidden");
+              contactButton.classList.remove("hidden");
+            }
+          }
+        }
+      }, 200); // Debounce for better performance
     });
   }
 

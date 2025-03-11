@@ -8,6 +8,7 @@
     right: 1rem;
     z-index: 100;
 }
+
 /* Back to Top Button */
 .back-to-top {
     position: fixed;
@@ -32,6 +33,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    will-change: transform, opacity;
 }
 
 .back-to-top.visible {
@@ -43,7 +45,7 @@
     background: var(--button-hover);
 }
 
-/* Fix for profile image background color */
+/* Profile image styles */
 .profile-image-front,
 .profile-image-back {
     position: absolute;
@@ -73,10 +75,10 @@
     will-change: transform;
 }
 
+/* Theme Toggle Button */
 #theme-toggle {
-    background: none;
+    background: var(--dark-primary); /* Dark theme primary by default */
     border: none;
-    color: var(--text-color);
     cursor: pointer;
     padding: 0.5rem;
     display: flex;
@@ -85,15 +87,18 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    background-color: var(--card-color);
     box-shadow: 0 2px 8px var(--shadow-color);
     transition:
         background-color 0.3s ease,
         transform 0.2s ease;
 }
 
+/* Light theme toggle styling */
+body[data-theme="light"] #theme-toggle {
+    background: var(--light-primary);
+}
+
 #theme-toggle:hover {
-    background-color: var(--secondary-color);
     transform: translateY(-2px);
 }
 
@@ -104,23 +109,24 @@
 #theme-toggle svg {
     width: 20px;
     height: 20px;
-    fill: var(--text-color);
+    fill: white; /* Always white fill for better contrast */
 }
 
-body:not([data-theme="dark"]) .moon-icon {
-    display: block;
-}
-
-body:not([data-theme="dark"]) .sun-icon {
+/* Icon visibility */
+.moon-icon {
     display: none;
 }
 
-body[data-theme="dark"] .moon-icon {
-    display: none;
+.sun-icon {
+    display: block;
 }
 
-body[data-theme="dark"] .sun-icon {
+body[data-theme="light"] .moon-icon {
     display: block;
+}
+
+body[data-theme="light"] .sun-icon {
+    display: none;
 }
 
 /* Hero Section */
@@ -133,7 +139,7 @@ body[data-theme="dark"] .sun-icon {
     padding-top: 3rem;
 }
 
-/* Flipping Profile Image - optimized with will-change */
+/* Flipping Profile Image */
 .profile-image-container {
     perspective: 1000px;
     width: 200px;
@@ -258,6 +264,7 @@ body[data-theme="dark"] .sun-icon {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    will-change: transform;
 }
 
 .service-card:hover {
@@ -311,6 +318,7 @@ body[data-theme="dark"] .sun-icon {
     padding: 1.5rem;
     border-radius: 8px;
     transition: transform 0.3s ease;
+    will-change: transform;
 }
 
 .about-detail-card:hover {
@@ -373,7 +381,7 @@ body[data-theme="dark"] .sun-icon {
     margin-right: auto;
 }
 
-/* Add anti-spam protected email styling */
+/* Email styling */
 .email-container {
     margin: 2rem auto;
     max-width: 400px;
@@ -398,11 +406,16 @@ body[data-theme="dark"] .sun-icon {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    position: relative;
 }
 
 .protected-email:hover {
     background-color: var(--primary-color);
     color: white;
+}
+
+.protected-email:hover::after {
+    opacity: 1;
 }
 
 #email-copy-instruction {
@@ -451,8 +464,8 @@ footer {
     opacity: 1 !important;
     transform: translateY(0) !important;
     transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
+        opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1),
+        transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /* Responsive component adjustments */
@@ -487,6 +500,14 @@ footer {
         top: 0;
         right: 0;
     }
+
+    .section {
+        margin: 2rem 0;
+    }
+
+    .hero {
+        padding-top: 2rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -500,7 +521,8 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .about-card {
+    .about-card,
+    .service-card {
         padding: 1.5rem;
     }
 
@@ -508,5 +530,13 @@ footer {
         gap: 1rem;
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    h1 {
+        font-size: clamp(1.6rem, 5vw, 2.2rem);
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
     }
 }

@@ -1,5 +1,6 @@
 /**
- * Module Loader - Dynamically loads HTML components
+ * Module Loader - Optimized for performance
+ * Dynamically loads HTML components with efficient DOM operations
  */
 class ModuleLoader {
   constructor() {
@@ -40,7 +41,7 @@ class ModuleLoader {
         </div>
       `,
 
-      // Services Component
+      // Services Component (remaining components unchanged...)
       "services-container": `
         <section id="services-section" class="section services">
           <h2 class="section-title">Meine Dienstleistungen</h2>
@@ -48,49 +49,53 @@ class ModuleLoader {
             <div class="service-card">
               <div class="service-icon">🍎</div>
               <h3>Apple-Ökosystem</h3>
-              <p>Expertenunterstützung für alle Apple-Geräte wie iPhone, iPad, Mac und Zusammenspiel der Geräte.</p>
+              <p>Expertenunterstützung für alle Apple-Geräte wie iPhone, iPad, MacBook, Mac und deren nahtloses Zusammenspiel.</p>
             </div>
             <div class="service-card">
               <div class="service-icon">☁️</div>
               <h3>Microsoft Cloud</h3>
-              <p>Implementierung und Support für Microsoft Azure, Microsoft Teams, SharePoint und die großer Teil der Office 365-Suite.</p>
+              <p>Implementierung und Support für Microsoft Azure, Microsoft Teams, SharePoint und einen großen Teil der Office 365-Suite.</p>
             </div>
             <div class="service-card">
               <div class="service-icon">🗄️</div>
               <h3>Selfhosting</h3>
-              <p>Nutzung von Docker-Container für verschiedene Selfhosting-Lösungen wie Nextcloud, PiHole, HomeAssistant und mehr. Beantwortung von Fragen zu Website-Hosting und Serveradministration.</p>
+              <p>Einsatz von Docker-Containern für diverse Selfhosting-Lösungen wie Nextcloud, PiHole, HomeAssistant und mehr. Kompetente Beratung zu Website-Hosting und Serveradministration.</p>
             </div>
             <div class="service-card">
               <div class="service-icon">🔒</div>
               <h3>Datenschutz</h3>
-              <p>Beratung zur Auswahl des richtigen E-Mail-Anbieters, Passwortmanagers oder Dokument und Foto Backup-Lösungen. Implementierung datenschutzfreundlicher Technologien für Ihre Privatsphäre.</p>
+              <p>Beratung zur Auswahl des optimalen E-Mail-Anbieters, Passwortmanagers sowie Dokumenten- und Foto-Backup-Lösungen. Implementierung datenschutzfreundlicher Technologien für maximale Privatsphäre.</p>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">⚙️</div>
+              <h3>Prozessoptimierung</h3>
+              <p>Analyse und Verbesserung Ihrer Arbeitsabläufe mit modernsten Tools. Spezialisiert auf Prozessautomatisierung mit Microsoft Power Automate für effizientere und fehlerfreie Workflows.</p>
             </div>
             <div class="service-card">
               <div class="service-icon">🤖</div>
               <h3>KI-Beratung</h3>
-              <p>Strategische Anleitung zur Implementierung von KI-Lösungen, die Ihren Arbeitsablauf und Ihre Produktivität verbessern.</p>
+              <p>Strategische Anleitung zur Integration von KI-Lösungen, die Ihren Workflow und Ihre Produktivität signifikant steigern.</p>
             </div>
             <div class="service-card">
               <div class="service-icon">🏠</div>
               <h3>SmartHome & IoT</h3>
-              <p>Design und Implementierung von Smart-Home-Systemen und Internet der Dinge-Lösungen. Spezieller Fokus auf HomeAssistant, Apple HomeKit, MQTT und Zigbee.</p>
+              <p>Design und Implementierung moderner Smart-Home-Systeme und IoT-Lösungen. Spezieller Fokus auf HomeAssistant, Apple HomeKit, MQTT und Zigbee.</p>
             </div>
             <div class="service-card">
               <div class="service-icon">👨‍💻</div>
               <h3>Coding</h3>
-              <p>Individuelle Programmier-Workshops für Einsteiger und Fortgeschrittene. Beratung zu Python, JavaScript, C und weiteren relevanten Sprachen für Ihre Projekte.</p>
+              <p>Maßgeschneiderte Programmier-Workshops für Einsteiger und Fortgeschrittene. Beratung zu Python, JavaScript, C und weiteren relevanten Sprachen für Ihre individuellen Projekte.</p>
             </div>
             <div class="service-card">
               <div class="service-icon">💻</div>
               <h3>Multi-Plattform-Support</h3>
-              <p>Umfassende Unterstützung für Linux, Windows 11, MacOS, Android und iOS-Plattformen.</p>
+              <p>Umfassende Unterstützung für Linux, Windows 11, MacOS, Android und iOS – plattformübergreifend aus einer Hand.</p>
             </div>
             <div class="service-card">
               <div class="service-icon">🖨️</div>
               <h3>3D-Druck</h3>
-              <p>Unterstützung bei CAD-Konstruktionen mit Fusion 360 und BambuLab. Beratung zur Umsetzung Ihrer 3D-Druck Projekte.</p>
+              <p>Professionelle Unterstützung bei CAD-Konstruktionen mit Fusion 360 und BambuLab. Praxisnahe Beratung zur erfolgreichen Umsetzung Ihrer 3D-Druck-Projekte.</p>
             </div>
-
           </div>
         </section>
       `,
@@ -122,8 +127,11 @@ class ModuleLoader {
                 </div>
 
                 <div class="about-detail-card">
-                  <h3>Hobbies</h3>
-                  <p>🚵 Radreisen und 🪴 Gartenarbeit</p>
+                  <h3>Referenzen</h3>
+                  <ul>
+                    <li>Migration der Castelltreff-Infrastruktur zu Microsoft Teams sowie Accountverwaltung in Microsoft Azure</li>
+                    <li>Planung und Design eines Smart-Home-Systems für ein Privathaus</li>
+                  </ul>
                 </div>
 
                 <div class="about-detail-card">
@@ -140,7 +148,7 @@ class ModuleLoader {
       "contact-container": `
         <section id="contact-section" class="section contact-container">
           <h2 class="section-title">Kontakt aufnehmen</h2>
-          <p class="contact-description">Haben Sie technische Herausforderungen oder Fragen zu meinen Dienstleistungen? Nehmen Sie Kontakt auf, und lassen Sie uns gemeinsam maßgeschneiderte Lösungen für Ihre individuellen Anforderungen ausarbeiten.</p>
+          <p class="contact-description">Haben Sie technische Herausforderungen oder Fragen zu meinen Dienstleistungen? Nehmen Sie Kontakt auf, und lassen Sie uns gemeinsam maßgeschneiderte Lösungen für Ihre individuellen Anforderungen finden.</p>
 
           <!-- Contact button that reveals the real email on click -->
           <button id="contact-button" class="button button-center">
@@ -177,46 +185,80 @@ class ModuleLoader {
                   <span>LinkedIn</span>
                 </a>
               </div>
-
             </nav>
           </div>
         </footer>
       `,
     };
+
+    // Pre-create DOM parser for better performance
+    this.parser = new DOMParser();
   }
 
-  // Load all modules on the page
+  // Load all modules with performance optimizations
   loadModules() {
-    for (const [id, html] of Object.entries(this.modules)) {
-      const container = document.getElementById(id);
-      if (container) {
-        // Use a more efficient way to set innerHTML (createContextualFragment)
-        const template = document.createElement("template");
-        template.innerHTML = html.trim();
-        container.appendChild(template.content.cloneNode(true));
-      }
+    // Get all container elements at once to minimize DOM queries
+    const containers = {};
+    for (const id of Object.keys(this.modules)) {
+      containers[id] = document.getElementById(id);
     }
+
+    // Batch DOM operations with DocumentFragment and requestAnimationFrame
+    requestAnimationFrame(() => {
+      for (const [id, html] of Object.entries(this.modules)) {
+        const container = containers[id];
+        if (!container) continue;
+
+        // Parse HTML once outside the DOM
+        const fragment = document.createDocumentFragment();
+        const temp = document.createElement("div");
+        temp.innerHTML = html.trim();
+
+        // Move all nodes to fragment
+        while (temp.firstChild) {
+          fragment.appendChild(temp.firstChild);
+        }
+
+        // Single DOM insert
+        container.appendChild(fragment);
+      }
+    });
   }
 
-  // Add a new module or update an existing one
+  // Add or update a module
   addModule(id, html) {
     this.modules[id] = html;
 
-    // If the container exists on the current page, update it immediately
+    // Update DOM if container exists
     const container = document.getElementById(id);
-    if (container) {
-      const template = document.createElement("template");
-      template.innerHTML = html.trim();
+    if (!container) return;
 
-      // Clear existing content and add new content
+    // More efficient DOM update with requestAnimationFrame
+    requestAnimationFrame(() => {
+      // Create document fragment
+      const fragment = document.createDocumentFragment();
+      const temp = document.createElement("div");
+      temp.innerHTML = html.trim();
+
+      // Move all nodes to fragment
+      while (temp.firstChild) {
+        fragment.appendChild(temp.firstChild);
+      }
+
+      // Clear and update in a single reflow
       container.innerHTML = "";
-      container.appendChild(template.content.cloneNode(true));
-    }
+      container.appendChild(fragment);
+    });
   }
 }
 
-// Initialize and load modules when DOM is ready
+// Initialize with performance optimization
 document.addEventListener("DOMContentLoaded", () => {
+  // Initialize module loader
   window.moduleLoader = new ModuleLoader();
-  window.moduleLoader.loadModules();
+
+  // Use requestAnimationFrame for non-blocking load
+  requestAnimationFrame(() => {
+    window.moduleLoader.loadModules();
+  });
 });

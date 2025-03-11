@@ -10,59 +10,94 @@
 }
 
 :root {
-    /* Light theme (default) */
-    --primary-color: #6200ee;
-    --primary-color-rgb: 98, 0, 238;
+    /* Store both theme colors */
+    --light-primary: #6200ee;
+    --light-primary-rgb: 98, 0, 238;
+    --light-accent: #ff4081;
+    --light-accent-rgb: 255, 64, 129;
+    --light-background: #fafafa;
+    --light-card: #ffffff;
+    --light-text: #212121;
+    --light-text-secondary: #757575;
+    --light-shadow: rgba(0, 0, 0, 0.1);
+    --light-footer-bg: #212121;
+    --light-footer-text: #ffffff;
+    --light-button-hover: #5100d3;
+
+    --dark-primary: #bb86fc;
+    --dark-primary-rgb: 187, 134, 252;
+    --dark-accent: #cf6679;
+    --dark-accent-rgb: 207, 102, 121;
+    --dark-background: #121212;
+    --dark-card: #1e1e1e;
+    --dark-text: #e1e1e1;
+    --dark-text-secondary: #c0c0c0;
+    --dark-shadow: rgba(0, 0, 0, 0.3);
+    --dark-footer-bg: #1e1e1e;
+    --dark-footer-text: #e1e1e1;
+    --dark-button-hover: #9965f4;
+
+    /* Common colors */
     --secondary-color: #03dac6;
     --secondary-color-rgb: 3, 218, 198;
-    --accent-color: #ff4081;
-    --accent-color-rgb: 255, 64, 129;
-    --background-color: #fafafa;
-    --card-color: #ffffff;
-    --text-color: #212121;
-    --text-secondary: #757575;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --footer-bg: #212121;
-    --footer-text: #ffffff;
-    --button-hover: #5100d3;
+
+    /* Dark theme (default) */
+    --primary-color: var(--dark-primary);
+    --primary-color-rgb: var(--dark-primary-rgb);
+    --accent-color: var(--dark-accent);
+    --accent-color-rgb: var(--dark-accent-rgb);
+    --background-color: var(--dark-background);
+    --card-color: var(--dark-card);
+    --text-color: var(--dark-text);
+    --text-secondary: var(--dark-text-secondary);
+    --shadow-color: var(--dark-shadow);
+    --footer-bg: var(--dark-footer-bg);
+    --footer-text: var(--dark-footer-text);
+    --button-hover: var(--dark-button-hover);
 }
 
-[data-theme="dark"] {
-    /* Dark theme */
-    --primary-color: #bb86fc;
-    --primary-color-rgb: 187, 134, 252;
-    --secondary-color: #03dac6;
-    --secondary-color-rgb: 3, 218, 198;
-    --accent-color: #cf6679;
-    --accent-color-rgb: 207, 102, 121;
-    --background-color: #121212;
-    --card-color: #1e1e1e;
-    --text-color: #e1e1e1;
-    --text-secondary: #b0b0b0;
-    --shadow-color: rgba(0, 0, 0, 0.3);
-    --footer-bg: #1e1e1e;
-    --footer-text: #e1e1e1;
-    --button-hover: #9965f4;
+[data-theme="light"] {
+    /* Light theme */
+    --primary-color: var(--light-primary);
+    --primary-color-rgb: var(--light-primary-rgb);
+    --accent-color: var(--light-accent);
+    --accent-color-rgb: var(--light-accent-rgb);
+    --background-color: var(--light-background);
+    --card-color: var(--light-card);
+    --text-color: var(--light-text);
+    --text-secondary: var(--light-text-secondary);
+    --shadow-color: var(--light-shadow);
+    --footer-bg: var(--light-footer-bg);
+    --footer-text: var(--light-footer-text);
+    --button-hover: var(--light-button-hover);
 }
 
-/* System dark mode preference */
-@media (prefers-color-scheme: dark) {
-    body:not([data-theme="light"]) {
-        --primary-color: #bb86fc;
-        --primary-color-rgb: 187, 134, 252;
-        --secondary-color: #03dac6;
-        --secondary-color-rgb: 3, 218, 198;
-        --accent-color: #cf6679;
-        --accent-color-rgb: 207, 102, 121;
-        --background-color: #121212;
-        --card-color: #1e1e1e;
-        --text-color: #e1e1e1;
-        --text-secondary: #b0b0b0;
-        --shadow-color: rgba(0, 0, 0, 0.3);
-        --footer-bg: #1e1e1e;
-        --footer-text: #e1e1e1;
-        --button-hover: #9965f4;
+/* System preference - keep user preference when set */
+@media (prefers-color-scheme: light) {
+    body:not([data-theme="dark"]) {
+        --primary-color: var(--light-primary);
+        --primary-color-rgb: var(--light-primary-rgb);
+        --accent-color: var(--light-accent);
+        --accent-color-rgb: var(--light-accent-rgb);
+        --background-color: var(--light-background);
+        --card-color: var(--light-card);
+        --text-color: var(--light-text);
+        --text-secondary: var(--light-text-secondary);
+        --shadow-color: var(--light-shadow);
+        --footer-bg: var(--light-footer-bg);
+        --footer-text: var(--light-footer-text);
+        --button-hover: var(--light-button-hover);
     }
+}
+
+/* Prevent FOUC (Flash of unstyled content) */
+html {
+    visibility: visible;
+    opacity: 1;
+}
+html.js-loading {
+    visibility: hidden;
+    opacity: 0;
 }
 
 body {
@@ -106,6 +141,7 @@ a:hover {
 :focus {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(var(--accent-color-rgb), 0.3);
 }
 
 /* Layout styles */
@@ -123,11 +159,12 @@ main {
 
 .section {
     margin: 3rem 0;
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
+    transform: translateY(20px);
     transition:
-        opacity 0.6s ease,
-        transform 0.6s ease;
+        opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1),
+        transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: opacity, transform;
 }
 
 .section-title {
@@ -139,4 +176,65 @@ main {
 /* Smooth scrolling for navigation */
 html {
     scroll-behavior: smooth;
+}
+
+/* High Contrast Mode Support */
+@media (forced-colors: active) {
+    .button,
+    .service-card,
+    .profile-image-container,
+    .about-card {
+        border: 1px solid currentColor;
+    }
+
+    svg {
+        forced-color-adjust: auto;
+    }
+
+    :focus {
+        outline: 2px solid CanvasText;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .hero-navigation,
+    #theme-toggle,
+    .back-to-top {
+        display: none !important;
+    }
+
+    * {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    .section {
+        page-break-inside: avoid;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    body {
+        font-size: 12pt;
+    }
+
+    h1,
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 2cm;
+    }
 }
