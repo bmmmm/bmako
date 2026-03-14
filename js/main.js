@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     setupContactProtection();
+    setupLegalEmails();
     setupSmoothScrolling();
     setupImageFlip();
     setupScrollAnimations();
@@ -72,10 +73,34 @@ function setupScrollAnimations() {
     document.querySelectorAll(".section").forEach((s) => observer.observe(s));
 }
 
+function setupLegalEmails() {
+    const els = document.querySelectorAll(".legal-email");
+    if (!els.length) return;
+    const parts = ["hi", "@", "bmako", ".de"];
+    const addr = parts.join("");
+    els.forEach((el) => {
+        el.textContent = addr;
+        el.href = "mailto:" + addr;
+    });
+}
+
 function setupBackToTop() {
     const btn = document.getElementById("back-to-top");
     if (!btn) return;
-    window.addEventListener("scroll", () => btn.classList.toggle("visible", window.scrollY > 300));
+    const progress = btn.querySelector(".back-to-top-progress");
+    const circumference = 2 * Math.PI * 20;
+    if (progress) {
+        progress.style.strokeDasharray = circumference;
+        progress.style.strokeDashoffset = circumference;
+    }
+    window.addEventListener("scroll", () => {
+        btn.classList.toggle("visible", window.scrollY > 300);
+        if (progress) {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = docHeight > 0 ? window.scrollY / docHeight : 0;
+            progress.style.strokeDashoffset = circumference * (1 - scrollPercent);
+        }
+    });
     btn.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
         history.pushState(null, "", window.location.pathname);
