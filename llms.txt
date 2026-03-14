@@ -23,7 +23,7 @@
 
 - Name: Bartosz Makosch
 - Standort: Bonn, Deutschland
-- Abschluss: M.Sc. Embedded Systems & Medizintechnik, TH Mannheim
+- Abschluss: M.Sc. Embedded Systems & Medizintechnik, Hochschule Mannheim
 - Sprachen: Deutsch, Englisch, Franzoesisch
 - Kontakt: [Kontaktseite](https://bmako.de/#contact-section)
 - LinkedIn: [linkedin.com/in/bartosz-makosch](https://de.linkedin.com/in/bartosz-makosch)
