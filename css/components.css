@@ -1,39 +1,65 @@
-/* Header and Navigation */
+/* ── Theme toggle ───────────────────────────────────────────── */
 .top-controls {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 1.25rem;
+    right: 1.5rem;
     z-index: 100;
 }
 
-/* Back to Top Button */
-.back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: var(--primary-color);
-    color: white;
-    border: none;
+#theme-toggle {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
     cursor: pointer;
-    opacity: 0;
-    visibility: hidden;
-    transition:
-        opacity 0.3s,
-        visibility 0.3s,
-        background-color 0.3s;
-    z-index: 1000;
-    box-shadow: 0 2px 8px var(--shadow-color);
-    font-size: 1.2rem;
+    padding: 0.45rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    will-change: transform, opacity;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    color: var(--text-muted);
+    transition: background-color 0.2s, transform 0.15s, border-color 0.2s;
+}
+
+#theme-toggle:hover {
+    background: var(--bg-card);
+    transform: translateY(-1px);
+}
+
+#theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--text-muted);
+}
+
+.moon-icon { display: none; }
+.sun-icon  { display: block; }
+
+body[data-theme="light"] .moon-icon { display: block; }
+body[data-theme="light"] .sun-icon  { display: none; }
+
+/* ── Back to top ────────────────────────────────────────────── */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+    z-index: 1000;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .back-to-top.visible {
@@ -42,133 +68,57 @@
 }
 
 .back-to-top:hover {
-    background: var(--button-hover);
-}
-
-/* Profile image styles */
-.profile-image-front,
-.profile-image-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid var(--primary-color);
-    background-color: var(--card-color);
-}
-
-.profile-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    background-color: var(--card-color);
-}
-
-.profile-image-flipper {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    will-change: transform;
-}
-
-/* Theme Toggle Button */
-#theme-toggle {
-    background: var(--dark-primary); /* Dark theme primary by default */
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    box-shadow: 0 2px 8px var(--shadow-color);
-    transition:
-        background-color 0.3s ease,
-        transform 0.2s ease;
-}
-
-/* Light theme toggle styling */
-body[data-theme="light"] #theme-toggle {
-    background: var(--light-primary);
-}
-
-#theme-toggle:hover {
     transform: translateY(-2px);
+    background: var(--bg-card);
 }
 
-#theme-toggle:active {
-    transform: translateY(0);
-}
-
-#theme-toggle svg {
-    width: 20px;
-    height: 20px;
-    fill: white; /* Always white fill for better contrast */
-}
-
-/* Icon visibility */
-.moon-icon {
-    display: none;
-}
-
-.sun-icon {
-    display: block;
-}
-
-body[data-theme="light"] .moon-icon {
-    display: block;
-}
-
-body[data-theme="light"] .sun-icon {
-    display: none;
-}
-
-/* Hero Section */
+/* ── Hero ───────────────────────────────────────────────────── */
 .hero {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    padding-top: 3rem;
+    text-align: center;
+    padding: 4rem 0 2rem;
+    gap: 0.75rem;
 }
 
-/* Flipping Profile Image */
+.subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+    margin-top: 0.25rem;
+}
+
+.hero-role {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* ── Profile image (flip Easter egg) ───────────────────────── */
 .profile-image-container {
     perspective: 1000px;
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
     cursor: pointer;
-    margin-bottom: 1rem;
-    transition: transform 0.3s ease;
+    margin-bottom: 1.25rem;
     position: relative;
-    will-change: transform;
+    border-radius: 50%;
+    transition: transform 0.25s ease;
 }
 
 .profile-image-container:hover {
-    transform: scale(1.02);
-}
-
-.profile-image-container:hover::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: rgba(var(--primary-color-rgb), 0.1);
-    border-radius: 50%;
-    pointer-events: none;
+    transform: scale(1.03);
 }
 
 .profile-image-flipper {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s;
+    transition: transform 0.75s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
     will-change: transform;
 }
@@ -185,8 +135,8 @@ body[data-theme="light"] .sun-icon {
     backface-visibility: hidden;
     border-radius: 50%;
     overflow: hidden;
-    border: 4px solid var(--primary-color);
-    background-color: var(--card-color);
+    border: 2px solid var(--border);
+    background-color: var(--bg-card);
 }
 
 .profile-image-back {
@@ -197,288 +147,225 @@ body[data-theme="light"] .sun-icon {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
-.profile-image-container:focus {
-    outline-offset: 4px;
-}
-
-.subtitle {
-    color: var(--accent-color);
-    font-size: 1.2rem;
-    font-weight: 300;
-}
-
-/* Hero Navigation */
+/* ── Hero nav ───────────────────────────────────────────────── */
 .hero-navigation {
     display: flex;
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: 2rem;
+    margin-top: 1.25rem;
 }
 
 .nav-link {
-    color: var(--primary-color);
-    font-weight: 600;
-    text-decoration: none;
-    padding: 0.5rem 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 0.25rem 0;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.2s;
 }
 
 .nav-link::after {
     content: "";
     position: absolute;
     width: 0;
-    height: 2px;
+    height: 1px;
     bottom: 0;
     left: 0;
-    background-color: var(--primary-color);
-    transition: width 0.3s ease;
+    background-color: var(--accent);
+    transition: width 0.25s ease;
 }
 
 .nav-link:hover {
-    color: var(--accent-color);
+    color: var(--text);
 }
 
 .nav-link:hover::after {
     width: 100%;
 }
 
-/* Service Cards */
+/* ── Services ───────────────────────────────────────────────── */
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
 }
 
 .service-card {
-    background-color: var(--card-color);
-    padding: 2rem;
+    background-color: var(--bg-card);
+    padding: 1.75rem;
     border-radius: 10px;
-    box-shadow: 0 4px 15px var(--shadow-color);
-    transition:
-        transform 0.3s ease,
-        background-color 0.3s ease,
-        box-shadow 0.3s ease;
+    border: 1px solid var(--border);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    will-change: transform;
+    align-items: flex-start;
+    text-align: left;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-4px);
+    border-color: rgba(79, 124, 255, 0.3);
+    box-shadow: 0 8px 24px var(--shadow);
 }
 
 .service-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    margin-bottom: 0.9rem;
+    line-height: 1;
 }
 
 .service-card h3 {
-    color: var(--primary-color);
     margin-bottom: 0.5rem;
+    font-size: 1rem;
 }
 
 .service-card p {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
 }
 
-/* About Section */
-.about-section {
-    padding: 2rem 0;
-}
-
+/* ── About ──────────────────────────────────────────────────── */
 .about-card {
-    background-color: var(--card-color);
+    background-color: var(--bg-card);
     border-radius: 10px;
-    box-shadow: 0 4px 15px var(--shadow-color);
-    padding: 2rem;
-    margin: 0 auto;
+    border: 1px solid var(--border);
+    padding: 2.25rem;
 }
 
 .about-bio {
     margin-bottom: 2rem;
-}
-
-.about-bio h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.75rem;
-}
-
-/* Optimized About Details Grid for any number of items */
-.about-details-grid {
-    display: grid;
-    gap: 2rem; /* Increased from 1.5rem to 2rem for more space between cards */
-    width: 100%;
-    margin-bottom: 2.5rem; /* Added space before references card */
-}
-
-/* Base responsive layout (fallback) */
-.about-details-grid {
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(280px, 1fr)
-    ); /* Increased minmax size from 250px to 280px */
-}
-
-/* Special layouts for specific item counts using :has() */
-/* For exactly 1 item */
-.about-details-grid:has(:first-child:last-child) {
-    grid-template-columns: minmax(280px, 3fr);
-    max-width: 600px; /* Increased from 500px */
-    margin: 0 auto 2.5rem auto;
-}
-
-/* For exactly 2 items */
-.about-details-grid:has(:nth-child(2):last-child) {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 800px; /* Added max-width for 2 items */
-    margin: 0 auto 2.5rem auto;
-}
-
-/* For exactly 3 items */
-.about-details-grid:has(:nth-child(3):last-child) {
-    grid-template-columns: repeat(3, 1fr);
-    max-width: 1100px; /* Added max-width for 3 items to prevent excessive stretching */
-    margin: 0 auto 2.5rem auto;
-}
-
-/* Fallbacks for browsers without :has() support */
-@supports not (selector(:has(*))) {
-    /* Count-based layouts will be handled by media queries instead */
-
-    /* Large screens - 3 columns */
-    @media (min-width: 950px) {
-        /* Increased from 800px */
-        .about-details-grid {
-            grid-template-columns: repeat(3, 1fr);
-            max-width: 1100px;
-            margin: 0 auto 2.5rem auto;
-        }
-    }
-
-    /* Medium screens - 2 columns */
-    @media (min-width: 650px) and (max-width: 949px) {
-        /* Adjusted ranges */
-        .about-details-grid {
-            grid-template-columns: repeat(2, 1fr);
-            max-width: 800px;
-            margin: 0 auto 2.5rem auto;
-        }
-    }
-
-    /* Small screens - single column */
-    @media (max-width: 649px) {
-        /* Adjusted from 549px */
-        .about-details-grid {
-            grid-template-columns: 1fr;
-            max-width: 500px;
-            margin: 0 auto 2.5rem auto;
-        }
-    }
-}
-
-/* Make cards stretch to fill their grid area */
-.about-detail-card {
-    height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 1.8rem; /* Increased padding from 1.5rem */
-    background-color: var(--background-color);
+    gap: 0.85rem;
+}
+
+.about-bio p {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.about-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.about-detail-card {
+    background-color: var(--bg-subtle);
     border-radius: 8px;
-    transition: transform 0.3s ease;
-    will-change: transform;
+    border: 1px solid var(--border);
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.2s ease;
 }
 
 .about-detail-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
 }
 
 .about-detail-card h3 {
-    color: var(--primary-color);
-    font-size: 1.2rem; /* Increased from 1.1rem */
-    margin-bottom: 0.8rem; /* Increased from 0.5rem */
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
 }
 
 .about-detail-card p,
 .about-detail-card li {
-    font-size: 1rem; /* Increased from 0.95rem */
-    line-height: 1.5;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.55;
 }
 
 .about-detail-card ul {
-    padding-left: 1.2rem;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
 }
 
-.about-detail-card li {
-    margin-bottom: 0.7rem;
+.about-detail-card li a {
+    color: var(--primary);
+    font-size: 0.9rem;
 }
 
-/* Additional enhancement for single-item case */
-.about-detail-card:only-child {
-    text-align: center;
+.about-detail-card li a:hover {
+    color: var(--accent);
 }
 
-/* Enhancement for 2-item case on smaller screens */
-@media (max-width: 650px) {
-    .about-details-grid:has(:nth-child(2):last-child) {
-        grid-template-columns: 1fr;
-        max-width: 500px;
-        margin: 0 auto 2rem auto;
-    }
-}
-
-/* References Card */
 .about-references-card {
-    background-color: var(--background-color);
-    padding: 1.8rem; /* Increased from 1.5rem */
+    background-color: var(--bg-subtle);
     border-radius: 8px;
-    margin-top: 0; /* Removed top margin since we added bottom margin to grid */
-    transition: transform 0.3s ease;
-    will-change: transform;
+    border: 1px solid var(--border);
+    padding: 1.4rem;
+    margin-top: 1rem;
+    transition: transform 0.2s ease;
 }
 
 .about-references-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
 }
 
 .about-references-card h3 {
-    color: var(--primary-color);
-    font-size: 1.2rem; /* Increased from 1.1rem */
-    margin-bottom: 0.8rem; /* Increased from 0.5rem */
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
 }
 
 .about-references-card ul {
-    padding-left: 1.2rem; /* Adjusted for better readability */
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
 }
 
 .about-references-card li {
-    margin-bottom: 0.7rem; /* Increased from 0.5rem */
-    line-height: 1.5;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.55;
+    padding-left: 1rem;
+    position: relative;
 }
 
-/* Buttons */
+.about-references-card li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
 .button {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
-    background-color: var(--primary-color);
-    color: white !important;
-    text-decoration: none;
-    border-radius: 4px;
+    padding: 0.7rem 1.6rem;
+    background-color: var(--primary);
+    color: #fff !important;
+    border-radius: 6px;
     font-weight: 600;
-    text-align: center;
+    font-size: 0.9rem;
     border: none;
     cursor: pointer;
-    transition:
-        background-color 0.3s ease,
-        transform 0.2s ease;
-    box-shadow: 0 2px 8px var(--shadow-color);
+    letter-spacing: 0.01em;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    box-shadow: 0 2px 10px rgba(79, 124, 255, 0.25);
 }
 
 .button:hover {
-    background-color: var(--button-hover);
+    background-color: var(--primary-hover);
     transform: translateY(-2px);
 }
 
@@ -489,155 +376,145 @@ body[data-theme="light"] .sun-icon {
 .button-center {
     display: block;
     margin: 0 auto;
-    max-width: 200px;
+    width: fit-content;
 }
 
-/* Contact Section */
+/* ── Contact ────────────────────────────────────────────────── */
 .contact-container {
     text-align: center;
-    margin: 4rem 0;
 }
 
 .contact-description {
+    color: var(--text-muted);
     margin-bottom: 2rem;
-    max-width: 600px;
+    max-width: 520px;
     margin-left: auto;
     margin-right: auto;
+    line-height: 1.7;
 }
 
-/* Email styling */
 .email-container {
-    margin: 2rem auto;
-    max-width: 400px;
-    background-color: var(--card-color);
+    margin: 1.75rem auto 0;
+    max-width: 360px;
+    background-color: var(--bg-card);
     border-radius: 8px;
+    border: 1px solid var(--border);
     padding: 1.5rem;
-    box-shadow: 0 4px 15px var(--shadow-color);
     text-align: center;
-    transition: all 0.3s ease;
 }
 
 .email-container.hidden {
     display: none;
 }
 
+.email-container > p:first-child {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
 .protected-email {
-    font-family: monospace;
-    font-size: 1.2rem;
-    margin: 1rem 0;
-    padding: 0.5rem;
-    background-color: var(--background-color);
-    border-radius: 4px;
+    font-family: ui-monospace, "SF Mono", "Fira Code", monospace;
+    font-size: 1.05rem;
+    color: var(--text);
+    margin: 0.5rem 0;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--bg-subtle);
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    position: relative;
+    display: inline-block;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .protected-email:hover {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.protected-email:hover::after {
-    opacity: 1;
-}
-
-#email-copy-instruction {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
+    background-color: var(--primary);
+    color: #fff;
 }
 
 .email-copied {
-    background-color: var(--secondary-color) !important;
-    color: white;
+    background-color: #2a9d5c !important;
+    color: #fff !important;
 }
 
-/* Footer */
+#email-copy-instruction {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
 footer {
-    text-align: center;
-    padding: 2rem;
-    margin-top: 2rem;
     background-color: var(--footer-bg);
-    color: var(--footer-text);
+    padding: 2rem 1.5rem;
+    margin-top: 4rem;
 }
 
 .footer-content {
+    max-width: 900px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
 }
 
+.footer-content > p {
+    font-size: 0.85rem;
+    color: var(--footer-text);
+}
+
 .footer-links {
     display: flex;
-    gap: 2rem;
+    align-items: center;
+    gap: 1.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .footer-links a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
+    color: var(--footer-text);
+    font-size: 0.85rem;
+    transition: color 0.2s;
 }
 
 .footer-links a:hover {
-    color: var(--accent-color);
+    color: var(--text);
 }
 
-/* Fade in animation for scroll effects */
-.fade-in {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition:
-        opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1),
-        transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+.linkedin-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
-/* Responsive component adjustments */
+/* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
-    .top-controls {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-    }
+    .hero { padding: 3rem 0 1.5rem; }
 
     .profile-image-container {
-        width: 150px;
-        height: 150px;
+        width: 130px;
+        height: 130px;
     }
 
-    .services-grid,
-    .about-details-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     }
 
     .hero-navigation {
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 1.25rem;
     }
 
-    .button-center {
-        max-width: 80%;
-    }
-
-    header .top-controls {
-        position: relative;
-        top: 0;
-        right: 0;
-    }
-
-    .section {
-        margin: 2rem 0;
-    }
-
-    .hero {
-        padding-top: 2rem;
+    .about-card {
+        padding: 1.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .profile-image-container {
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
     }
 
     .services-grid,
@@ -645,22 +522,15 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .about-card,
-    .service-card {
-        padding: 1.5rem;
+    .hero-navigation {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
     }
 
     .footer-links {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
+        gap: 1.25rem;
     }
 
-    h1 {
-        font-size: clamp(1.6rem, 5vw, 2.2rem);
-    }
-
-    .subtitle {
-        font-size: 1.1rem;
-    }
+    .section { margin: 3.5rem 0; }
 }

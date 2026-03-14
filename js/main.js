@@ -1,262 +1,104 @@
-/**
- * Main Application Script - Handles initialization and functionality
- */
 document.addEventListener("DOMContentLoaded", function () {
-  // Set up the protected contact email functionality
-  setupContactProtection();
+    // Set footer year
+    const yearEl = document.getElementById("footer-year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Enable smooth scrolling for navigation links
-  setupSmoothScrolling();
+    setupContactProtection();
+    setupSmoothScrolling();
+    setupImageFlip();
+    setupScrollAnimations();
+    setupBackToTop();
+});
 
-  // Set up image flip animation
-  setupImageFlip();
-
-  // Add scroll animations
-  setupScrollAnimations();
-
-  // Set up back to top button
-  setupBackToTop();
-
-  // Function to set up the anti-spam contact protection
-  function setupContactProtection() {
+function setupContactProtection() {
     const contactButton = document.getElementById("contact-button");
     const emailContainer = document.getElementById("email-container");
-
-    // Only proceed if both elements exist
     if (!contactButton || !emailContainer) return;
 
-    // Use event delegation for better performance
-    document.addEventListener("click", (e) => {
-      const clickedContactButton = e.target.closest("#contact-button");
-      const protectedEmail = e.target.closest(".protected-email");
-
-      if (clickedContactButton) {
-        // Set up real email parts (these are split to make it harder for bots)
-        const emailPart1 = document.getElementById("email-part1");
-        const emailPart2 = document.getElementById("email-part2");
-
-        if (emailPart1 && emailPart2) {
-          emailPart1.textContent = "hi";
-          emailPart2.textContent = "bmako.de";
-        }
-
+    contactButton.addEventListener("click", () => {
+        document.getElementById("email-part1").textContent = "hi";
+        document.getElementById("email-part2").textContent = "bmako.de";
         emailContainer.classList.remove("hidden");
         contactButton.classList.add("hidden");
-      } else if (protectedEmail) {
-        const emailPart1 = document.getElementById("email-part1");
-        const emailPart2 = document.getElementById("email-part2");
-
-        if (emailPart1 && emailPart2) {
-          // Combine the email parts
-          const fullEmail = `${emailPart1.textContent}@${emailPart2.textContent}`;
-
-          // Copy to clipboard with modern API and error handling
-          navigator.clipboard
-            .writeText(fullEmail)
-            .then(() => {
-              // Visual feedback that email was copied
-              protectedEmail.classList.add("email-copied");
-
-              // Change the instruction text
-              const instruction = document.getElementById(
-                "email-copy-instruction",
-              );
-              if (instruction) {
-                instruction.textContent = "E-Mail kopiert!";
-              }
-
-              // Reset after 2 seconds
-              setTimeout(() => {
-                protectedEmail.classList.remove("email-copied");
-                if (instruction) {
-                  instruction.textContent = "Klicken zum Kopieren";
-                }
-              }, 2000);
-            })
-            .catch((err) => {
-              console.error("Konnte Text nicht kopieren:", err);
-              // Provide fallback or user notification here
-            });
-        }
-      }
     });
 
-    // Add scroll event listener to hide email container when scrolling away
+    document.querySelector(".protected-email")?.addEventListener("click", () => {
+        const email =
+            document.getElementById("email-part1").textContent +
+            "@" +
+            document.getElementById("email-part2").textContent;
+
+        navigator.clipboard.writeText(email).then(() => {
+            const el = document.querySelector(".protected-email");
+            const instr = document.getElementById("email-copy-instruction");
+            el.classList.add("email-copied");
+            if (instr) instr.textContent = "E-Mail kopiert!";
+            setTimeout(() => {
+                el.classList.remove("email-copied");
+                if (instr) instr.textContent = "Klicken zum Kopieren";
+            }, 2000);
+        });
+    });
+
+    // Hide email when scrolled away from contact section
     let scrollTimeout;
     window.addEventListener("scroll", () => {
-      // Clear previous timeout if it exists
-      if (scrollTimeout) {
         clearTimeout(scrollTimeout);
-      }
-
-      // Set a new timeout to avoid performance issues with scroll events
-      scrollTimeout = setTimeout(() => {
-        // Check if email container is visible and if we've scrolled significantly
-        if (!emailContainer.classList.contains("hidden")) {
-          // Get the contact section position
-          const contactSection = document.getElementById("contact-section");
-          if (contactSection) {
-            const rect = contactSection.getBoundingClientRect();
-
-            // If we've scrolled the contact section mostly out of view
+        scrollTimeout = setTimeout(() => {
+            if (emailContainer.classList.contains("hidden")) return;
+            const rect = document.getElementById("contact-section")?.getBoundingClientRect();
+            if (!rect) return;
             if (rect.top < -100 || rect.bottom > window.innerHeight + 100) {
-              // Hide email container and show contact button again
-              emailContainer.classList.add("hidden");
-              contactButton.classList.remove("hidden");
+                emailContainer.classList.add("hidden");
+                contactButton.classList.remove("hidden");
             }
-          }
-        }
-      }, 200); // Debounce for better performance
+        }, 200);
     });
-  }
+}
 
-  // Function to set up smooth scrolling
-  function setupSmoothScrolling() {
-    // Use event delegation for better performance
+function setupSmoothScrolling() {
     document.addEventListener("click", (e) => {
-      const anchor = e.target.closest('a[href^="#"]');
-
-      if (anchor) {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (!anchor) return;
+        const target = document.querySelector(anchor.getAttribute("href"));
+        if (!target) return;
         e.preventDefault();
-        const targetId = anchor.getAttribute("href");
-        const targetElement = document.querySelector(targetId);
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 20, behavior: "smooth" });
+        history.pushState(null, null, anchor.getAttribute("href"));
+    });
+}
 
-        if (targetElement) {
-          // Add a small offset to account for fixed elements
-          const offset = 20;
-          const targetPosition =
-            targetElement.getBoundingClientRect().top + window.scrollY - offset;
-
-          window.scrollTo({
-            top: targetPosition,
-            behavior: "smooth",
-          });
-
-          // Update URL for bookmarking/sharing
-          history.pushState(null, null, targetId);
+function setupImageFlip() {
+    const container = document.querySelector(".profile-image-container");
+    if (!container) return;
+    container.addEventListener("click", () => container.classList.toggle("flipped"));
+    container.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            container.classList.toggle("flipped");
         }
-      }
     });
-  }
+}
 
-  // Function to set up image flip animation
-  function setupImageFlip() {
-    // Use event delegation for click and keyboard interactions
-    document.addEventListener("click", (e) => {
-      const profileContainer = e.target.closest(".profile-image-container");
-      if (profileContainer) {
-        profileContainer.classList.toggle("flipped");
-      }
+function setupScrollAnimations() {
+    if (!("IntersectionObserver" in window)) return;
+    const observer = new IntersectionObserver(
+        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("fade-in"); }),
+        { threshold: 0.08 }
+    );
+    document.querySelectorAll(".section").forEach((s) => observer.observe(s));
+}
+
+function setupBackToTop() {
+    const btn = document.getElementById("back-to-top");
+    if (!btn) return;
+    window.addEventListener("scroll", () => btn.classList.toggle("visible", window.scrollY > 300));
+    btn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        history.pushState(null, null, window.location.pathname);
     });
+}
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        const profileContainer = e.target.closest(".profile-image-container");
-        if (profileContainer) {
-          e.preventDefault();
-          profileContainer.classList.toggle("flipped");
-        }
-      }
-    });
-  }
-
-  // Function to handle scroll animations using Intersection Observer API
-  function setupScrollAnimations() {
-    // Check if IntersectionObserver is supported
-    if ("IntersectionObserver" in window) {
-      const sections = document.querySelectorAll(".section");
-
-      // Create a single observer instance for better performance
-      const sectionObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("fade-in");
-              // No need to unobserve - we want animations on scroll back up too
-            }
-          });
-        },
-        {
-          root: null, // viewport
-          threshold: 0.1, // trigger when 10% of the element is visible
-          rootMargin: "0px",
-        },
-      );
-
-      // Add initial styles and observe each section
-      sections.forEach((section) => {
-        section.style.opacity = "0";
-        section.style.transform = "translateY(20px)";
-        sectionObserver.observe(section);
-      });
-    }
-  }
-
-  // Function to set up back to top button
-  function setupBackToTop() {
-    const backToTop = document.getElementById("back-to-top");
-
-    if (!backToTop) return;
-
-    // Show button when scrolled down
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        backToTop.classList.add("visible");
-      } else {
-        backToTop.classList.remove("visible");
-      }
-    });
-
-    // Scroll to top on click
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-      // Update URL without the hash
-      history.pushState(null, null, window.location.pathname);
-    });
-  }
-
-  // Add functionality to detect when page is loaded from cache
-  window.addEventListener("pageshow", (event) => {
-    // If the page is loaded from cache (back/forward navigation)
-    if (event.persisted) {
-      // Re-initialize theme to ensure consistency
-      if (window.themeManager) {
-        window.themeManager.initTheme();
-      }
-    }
-  });
-
-  // Helper function to add services dynamically if needed
-  window.addService = function (icon, title, description) {
-    const servicesGrid = document.querySelector(".services-grid");
-    if (!servicesGrid) return false;
-
-    const serviceCard = document.createElement("div");
-    serviceCard.className = "service-card";
-    serviceCard.innerHTML = `
-      <div class="service-icon">${icon}</div>
-      <h3>${title}</h3>
-      <p>${description}</p>
-    `;
-
-    servicesGrid.appendChild(serviceCard);
-
-    // Apply scroll animations if they exist
-    if (serviceCard.classList) {
-      serviceCard.style.opacity = "0";
-      serviceCard.style.transform = "translateY(20px)";
-
-      // Use requestAnimationFrame for better performance
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          serviceCard.classList.add("fade-in");
-        }, 100);
-      });
-    }
-
-    return true;
-  };
+window.addEventListener("pageshow", (e) => {
+    if (e.persisted && window.themeManager) window.themeManager.initTheme();
 });

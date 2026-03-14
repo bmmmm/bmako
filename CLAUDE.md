@@ -58,13 +58,12 @@ Avoid generic Material Design purple. Use a more refined palette:
 ```
 
 ### Typography
-- **Body:** `Inter` — clean, modern, highly legible
-- **Headings:** `Fraunces` or `DM Serif Display` — distinctive, premium feel
-- Google Fonts: `family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,700`
+- **No Google Fonts** — use system font stack only (faster, no external requests, no privacy concerns)
+- Body: `system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif`
+- Headings: same stack, heavier weight — rely on weight/size/spacing for hierarchy
 
 ### Icons
-- Use SVG icons from **Lucide** or **Heroicons** — never emoji for service cards
-- Icons should be 24–32px, stroke-based (not filled), consistent weight
+- **Keep emoji** for service cards — they give character and an informal warmth that fits the one-person consultancy tone
 
 ### Spacing
 - Section padding: `5rem 0` desktop, `3rem 0` mobile
@@ -109,7 +108,7 @@ Current 10 is too many. Preferred grouping:
 - Back-to-top button: ✅ keep
 - Theme toggle: ✅ keep
 - Service card hover lift: ✅ keep (reduce from -10px to -6px)
-- Profile image 3D flip: ❌ remove — replace with subtle scale on hover
+- Profile image 3D flip: ✅ keep — intentional Easter egg, gives personality
 - Email reveal button: ✅ keep (good UX + spam protection)
 
 ---
@@ -159,5 +158,8 @@ Remove: `moduleLoader.js` — HTML goes directly in `index.html`.
 - Use emoji as icons in service cards
 - Add more than 6 service cards
 - Use generic Material Design purple color palette
+- Use Google Fonts or any external font service
 - Add tracking scripts or analytics
 - Over-engineer: no build pipelines, no TypeScript, no bundlers
+- Remove emoji from service cards — they give personality
+- Remove the profile image flip — it's an intentional Easter egg
