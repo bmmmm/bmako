@@ -98,6 +98,14 @@ body[data-theme="light"] .sun-icon  { display: none; }
     text-transform: uppercase;
 }
 
+.hero-statement {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    margin-top: 0.5rem;
+}
+
 /* ── Profile image (flip Easter egg) ───────────────────────── */
 .profile-image-container {
     perspective: 1000px;
@@ -207,7 +215,7 @@ body[data-theme="light"] .sun-icon  { display: none; }
 
 .service-card:hover {
     transform: translateY(-4px);
-    border-color: rgba(79, 124, 255, 0.3);
+    border-color: color-mix(in srgb, var(--primary) 30%, transparent);
     box-shadow: 0 8px 24px var(--shadow);
 }
 
@@ -361,7 +369,7 @@ body[data-theme="light"] .sun-icon  { display: none; }
     cursor: pointer;
     letter-spacing: 0.01em;
     transition: background-color 0.2s ease, transform 0.15s ease;
-    box-shadow: 0 2px 10px rgba(79, 124, 255, 0.25);
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--primary) 25%, transparent);
 }
 
 .button:hover {
@@ -403,10 +411,6 @@ body[data-theme="light"] .sun-icon  { display: none; }
     text-align: center;
 }
 
-.email-container.hidden {
-    display: none;
-}
-
 .email-container > p:first-child {
     font-size: 0.8rem;
     text-transform: uppercase;
@@ -418,23 +422,18 @@ body[data-theme="light"] .sun-icon  { display: none; }
 .protected-email {
     font-family: ui-monospace, "SF Mono", "Fira Code", monospace;
     font-size: 1.05rem;
-    color: var(--text);
+    color: var(--text) !important;
     margin: 0.5rem 0;
     padding: 0.5rem 0.75rem;
     background-color: var(--bg-subtle);
     border-radius: 5px;
-    cursor: pointer;
     display: inline-block;
     transition: background-color 0.2s, color 0.2s;
+    text-decoration: none;
 }
 
 .protected-email:hover {
     background-color: var(--primary);
-    color: #fff;
-}
-
-.email-copied {
-    background-color: #2a9d5c !important;
     color: #fff !important;
 }
 
@@ -480,7 +479,7 @@ footer {
 }
 
 .footer-links a:hover {
-    color: #e2e5ee;
+    color: var(--accent);
 }
 
 .linkedin-link {
