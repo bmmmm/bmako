@@ -8,5 +8,8 @@
 *.swp
 *~
 
+# Claude Code / MCP agent artifacts
+.playwright-mcp/
+
 # Logs
 *.log
