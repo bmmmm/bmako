@@ -13,8 +13,8 @@
 
 ## Referenzen
 
+- [bitcircus101.de](https://bitcircus101.de): Gruendung & Leitung Hackspace Bonn
 - [vfcd.org](https://vfcd.org): Website & IT fuer einen gemeinnuetzigen Verein
-- [bolle-bonn.de](https://bolle-bonn.de): Website fuer freie Lastenraeder Bonn
 - IT-Migration eines Vereins zu Microsoft Teams und Azure
 - Smart-Home-System von Grund auf geplant und umgesetzt
 - Kassensystem mit Zahlungsterminal in Betrieb genommen
@@ -31,3 +31,5 @@
 ## Seiten
 
 - [Hauptseite](https://bmako.de/): Vollstaendige Website mit allen Informationen
+- [Impressum](https://bmako.de/impressum.html): Impressum und Kontaktdaten
+- [Datenschutz](https://bmako.de/datenschutz.html): Datenschutzerklaerung

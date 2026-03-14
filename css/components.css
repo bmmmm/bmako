@@ -40,26 +40,26 @@
 body[data-theme="light"] .moon-icon { display: block; }
 body[data-theme="light"] .sun-icon  { display: none; }
 
-/* ── Back to top ────────────────────────────────────────────── */
+/* ── Back to top (scroll progress ring) ─────────────────────── */
 .back-to-top {
     position: fixed;
     bottom: 1.5rem;
     right: 1.5rem;
-    width: 38px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: var(--bg-subtle);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
+    background: var(--bg-card);
+    border: none;
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+    transition: opacity 0.4s, visibility 0.4s, transform 0.2s, background-color 0.3s;
     z-index: 1000;
-    font-size: 1rem;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 12px var(--shadow);
 }
 
 .back-to-top.visible {
@@ -69,7 +69,41 @@ body[data-theme="light"] .sun-icon  { display: none; }
 
 .back-to-top:hover {
     transform: translateY(-2px);
-    background: var(--bg-card);
+    background: var(--bg-subtle);
+}
+
+.back-to-top-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(-90deg);
+}
+
+.back-to-top-track {
+    fill: none;
+    stroke: var(--border);
+    stroke-width: 2;
+}
+
+.back-to-top-progress {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.15s;
+}
+
+.back-to-top-arrow {
+    position: relative;
+    z-index: 1;
+    font-size: 1rem;
+    line-height: 1;
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.back-to-top:hover .back-to-top-arrow {
+    color: var(--accent);
 }
 
 /* ── Hero ───────────────────────────────────────────────────── */
@@ -486,6 +520,98 @@ footer {
     display: flex;
     align-items: center;
     gap: 0.4rem;
+}
+
+.footer-legal {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.25rem;
+}
+
+.footer-legal a {
+    color: var(--footer-text);
+    font-size: 0.78rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.footer-legal a:hover {
+    opacity: 1;
+    color: var(--accent);
+}
+
+/* ── Legal pages ───────────────────────────────────────────── */
+.legal-page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+.legal-back {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+}
+
+.legal-back:hover {
+    color: var(--accent);
+}
+
+.legal-page h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    margin-bottom: 2rem;
+}
+
+.legal-page h2 {
+    font-size: 1.05rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+}
+
+.legal-page p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+}
+
+.legal-page ul {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+    padding-left: 1.25rem;
+}
+
+.legal-page li {
+    margin-bottom: 0.35rem;
+}
+
+.legal-page a {
+    color: var(--primary);
+}
+
+.legal-page a:hover {
+    color: var(--accent);
+}
+
+.legal-at {
+    color: var(--text-muted);
+    font-size: 0.85em;
+}
+
+.legal-meta {
+    margin-top: 2.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+}
+
+.legal-footer-links {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
 }
 
 /* ── Responsive ─────────────────────────────────────────────── */
