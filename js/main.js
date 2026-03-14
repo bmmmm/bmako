@@ -13,46 +13,17 @@ document.addEventListener("DOMContentLoaded", function () {
 function setupContactProtection() {
     const contactButton = document.getElementById("contact-button");
     const emailContainer = document.getElementById("email-container");
-    if (!contactButton || !emailContainer) return;
+    const emailLink = document.getElementById("email-link");
+    if (!contactButton || !emailContainer || !emailLink) return;
+
+    const parts = ["hi", "@", "bmako", ".de"];
 
     contactButton.addEventListener("click", () => {
-        document.getElementById("email-part1").textContent = "hi";
-        document.getElementById("email-part2").textContent = "bmako.de";
+        const addr = parts[0] + parts[1] + parts[2] + parts[3];
+        emailLink.textContent = addr;
+        emailLink.href = "mailto:" + addr;
         emailContainer.classList.remove("hidden");
         contactButton.classList.add("hidden");
-    });
-
-    document.querySelector(".protected-email")?.addEventListener("click", () => {
-        const email =
-            document.getElementById("email-part1").textContent +
-            "@" +
-            document.getElementById("email-part2").textContent;
-
-        navigator.clipboard.writeText(email).then(() => {
-            const el = document.querySelector(".protected-email");
-            const instr = document.getElementById("email-copy-instruction");
-            el.classList.add("email-copied");
-            if (instr) instr.textContent = "E-Mail kopiert!";
-            setTimeout(() => {
-                el.classList.remove("email-copied");
-                if (instr) instr.textContent = "Klicken zum Kopieren";
-            }, 2000);
-        });
-    });
-
-    // Hide email when scrolled away from contact section
-    let scrollTimeout;
-    window.addEventListener("scroll", () => {
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-            if (emailContainer.classList.contains("hidden")) return;
-            const rect = document.getElementById("contact-section")?.getBoundingClientRect();
-            if (!rect) return;
-            if (rect.top < -100 || rect.bottom > window.innerHeight + 100) {
-                emailContainer.classList.add("hidden");
-                contactButton.classList.remove("hidden");
-            }
-        }, 200);
     });
 }
 
@@ -64,18 +35,22 @@ function setupSmoothScrolling() {
         if (!target) return;
         e.preventDefault();
         window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 20, behavior: "smooth" });
-        history.pushState(null, null, anchor.getAttribute("href"));
+        history.pushState(null, "", anchor.getAttribute("href"));
     });
 }
 
 function setupImageFlip() {
     const container = document.querySelector(".profile-image-container");
     if (!container) return;
-    container.addEventListener("click", () => container.classList.toggle("flipped"));
+    const flip = () => {
+        container.classList.toggle("flipped");
+        if (window.themeManager) window.themeManager.toggleTheme();
+    };
+    container.addEventListener("click", flip);
     container.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
-            container.classList.toggle("flipped");
+            flip();
         }
     });
 }
@@ -83,7 +58,15 @@ function setupImageFlip() {
 function setupScrollAnimations() {
     if (!("IntersectionObserver" in window)) return;
     const observer = new IntersectionObserver(
-        (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add("fade-in"); }),
+        (entries) => entries.forEach((e) => {
+            if (e.isIntersecting) {
+                e.target.style.willChange = "opacity, transform";
+                e.target.classList.add("fade-in");
+                e.target.addEventListener("transitionend", () => {
+                    e.target.style.willChange = "";
+                }, { once: true });
+            }
+        }),
         { threshold: 0.08 }
     );
     document.querySelectorAll(".section").forEach((s) => observer.observe(s));
@@ -95,7 +78,7 @@ function setupBackToTop() {
     window.addEventListener("scroll", () => btn.classList.toggle("visible", window.scrollY > 300));
     btn.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
-        history.pushState(null, null, window.location.pathname);
+        history.pushState(null, "", window.location.pathname);
     });
 }
 

@@ -1,0 +1,33 @@
+# Bartosz Makosch – Tech-Beratung
+
+> Bartosz Makosch ist ein unabhaengiger IT-Berater und Ingenieur (M.Sc.) in Bonn, Deutschland. Er bietet persoenliche technische Betreuung fuer kleine und mittlere Unternehmen, Vereine und Privatpersonen. Kein Callcenter, ein Ansprechpartner fuer alles.
+
+## Dienstleistungen
+
+- [Apple-Oekosystem](https://bmako.de/#services-section): Einrichtung, Integration und laufender Support fuer Apple-Geraete und -Dienste.
+- [KI-Beratung](https://bmako.de/#services-section): Unabhaengige Beratung zu KI-Tools, Workflow-Automatisierung und Potenzialanalyse.
+- [Workshops & Schulungen](https://bmako.de/#services-section): Praxisnahe Schulungen zu KI, Cloud und Datenschutz fuer Teams.
+- [Microsoft Cloud](https://bmako.de/#services-section): Teams, SharePoint, Azure – Einrichtung und Betreuung.
+- [Datenschutz & Selfhosting](https://bmako.de/#services-section): Selfhosting-Loesungen und unabhaengige Datenschutzberatung.
+- [SmartHome & IoT](https://bmako.de/#services-section): Herstellerunabhaengige SmartHome-Systeme, optional ohne Cloud.
+
+## Referenzen
+
+- [vfcd.org](https://vfcd.org): Website & IT fuer einen gemeinnuetzigen Verein
+- [bolle-bonn.de](https://bolle-bonn.de): Website fuer freie Lastenraeder Bonn
+- IT-Migration eines Vereins zu Microsoft Teams und Azure
+- Smart-Home-System von Grund auf geplant und umgesetzt
+- Kassensystem mit Zahlungsterminal in Betrieb genommen
+
+## Hintergrund
+
+- Name: Bartosz Makosch
+- Standort: Bonn, Deutschland
+- Abschluss: M.Sc. Embedded Systems & Medizintechnik, TH Mannheim
+- Sprachen: Deutsch, Englisch, Franzoesisch
+- Kontakt: [Kontaktseite](https://bmako.de/#contact-section)
+- LinkedIn: [linkedin.com/in/bartosz-makosch](https://de.linkedin.com/in/bartosz-makosch)
+
+## Seiten
+
+- [Hauptseite](https://bmako.de/): Vollstaendige Website mit allen Informationen
