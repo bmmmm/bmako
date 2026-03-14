@@ -22,7 +22,7 @@ function setupContactProtection() {
     contactButton.addEventListener("click", () => {
         const addr = parts[0] + parts[1] + parts[2] + parts[3];
         emailLink.textContent = addr;
-        emailLink.href = "mailto:" + addr;
+        emailLink.href = "mailto:" + addr + "?subject=Anfrage";
         emailContainer.classList.remove("hidden");
         contactButton.classList.add("hidden");
     });
