@@ -10,6 +10,7 @@
 
 # Claude Code / MCP agent artifacts
 .playwright-mcp/
+.claude/settings.local.json
 
 # Logs
 *.log
