@@ -250,7 +250,7 @@ body[data-theme="light"] .sun-icon  { display: none; }
 .service-card:hover {
     transform: translateY(-4px);
     border-color: color-mix(in srgb, var(--primary) 30%, transparent);
-    box-shadow: 0 8px 24px var(--shadow);
+    box-shadow: 0 8px 24px var(--shadow), inset 3px 0 0 var(--accent);
 }
 
 .service-icon {
@@ -351,76 +351,80 @@ body[data-theme="light"] .sun-icon  { display: none; }
     color: var(--accent) !important;
 }
 
-/* ── About ──────────────────────────────────────────────────── */
-.about-details-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
+/* ── Hintergrund / Ausbildung ───────────────────────────────── */
+.hintergrund-block {
+    margin-top: 2.5rem;
 }
 
-.about-detail-card {
-    background-color: var(--bg-subtle);
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    padding: 1.4rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.about-detail-card:hover {
-    background-color: var(--bg-card);
-    box-shadow: inset 3px 0 0 var(--accent);
-}
-
-.about-detail-card h3 {
-    font-size: 0.75rem;
+.hintergrund-label {
+    font-size: 0.7rem;
+    font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--text-muted);
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.6rem;
 }
 
-.about-detail-card p,
-.about-detail-card li {
-    font-size: 0.9rem;
-    color: var(--text);
-    line-height: 1.55;
+.edu-list {
+    border-top: 1px solid var(--border);
 }
 
-.detail-value {
+.edu-item {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    border-radius: 6px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.edu-item:hover {
+    background-color: var(--bg-subtle);
+    box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.edu-degree {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    font-family: ui-monospace, "SF Mono", "Fira Code", monospace;
+    transition: color 0.2s ease;
+    user-select: none;
+}
+
+.edu-item:hover .edu-degree {
+    color: var(--accent);
+}
+
+.edu-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.edu-title {
     font-size: 0.92rem;
+    font-weight: 600;
     color: var(--text);
-    font-weight: 500;
-    line-height: 1.5;
+    margin: 0;
+    line-height: 1.35;
+}
+
+.edu-institution {
+    font-size: 0.78rem;
+    color: var(--text-muted);
     margin: 0;
 }
 
-.detail-institution {
-    font-size: 0.8rem;
+.edu-languages {
+    font-size: 0.75rem;
     color: var(--text-muted);
-    margin-top: 0.15rem;
-    margin-bottom: 0;
-}
-
-.about-detail-card ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-}
-
-.about-detail-card li a {
-    color: var(--primary);
-    font-size: 0.9rem;
-}
-
-.about-detail-card li a:hover {
-    color: var(--accent);
+    margin-top: 0.85rem;
+    text-align: right;
+    letter-spacing: 0.03em;
 }
 
 
