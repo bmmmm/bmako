@@ -470,61 +470,39 @@ body[data-theme="light"] .sun-icon  { display: none; }
 }
 
 /* ── Contact ────────────────────────────────────────────────── */
-.contact-container {
-    text-align: center;
-}
-
 .contact-description {
     color: var(--text-muted);
-    margin-bottom: 2rem;
-    max-width: 480px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.7;
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
     font-size: 0.875rem;
+    max-width: 440px;
 }
 
-.email-container {
-    margin: 1.75rem auto 0;
-    max-width: 360px;
-    background-color: transparent;
-    border: 1px solid var(--border);
-    border-radius: 0;
-    padding: 1.5rem;
-    text-align: center;
-    transition: border-color 0.2s;
-}
-
-.email-container > p:first-child {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    margin-bottom: 0.5rem;
+.email-reveal {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
 }
 
 .protected-email {
     font-family: ui-monospace, "SF Mono", "Fira Code", monospace;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--text) !important;
-    margin: 0.5rem 0;
-    padding: 0.4rem 0.6rem;
-    background-color: var(--bg-subtle);
-    border-radius: 0;
-    display: inline-block;
-    transition: background-color 0.2s, color 0.2s;
     text-decoration: none;
+    transition: color 0.2s ease;
 }
 
 .protected-email:hover {
-    background-color: var(--accent);
-    color: #fff !important;
+    color: var(--accent) !important;
 }
 
-#email-copy-instruction {
-    font-size: 0.72rem;
+.email-hint {
+    font-size: 0.7rem;
     color: var(--text-muted);
-    margin-top: 0.4rem;
+    letter-spacing: 0.03em;
 }
 
 /* ── Footer ─────────────────────────────────────────────────── */
