@@ -109,18 +109,33 @@ body[data-theme="light"] .sun-icon  { display: none; }
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 5rem 0 2rem;
+    padding: 0 0 2rem;
     gap: 0;
 }
 
 .profile-image-container {
     perspective: 1000px;
-    width: 100px;
-    height: 100px;
+    width: clamp(280px, 78vw, 480px);
+    height: clamp(280px, 78vw, 480px);
     cursor: pointer;
-    margin-bottom: 2.5rem;
+    margin-bottom: -3.5rem;
     position: relative;
     border-radius: 50%;
+    z-index: 0;
+}
+
+.hero h1 {
+    position: relative;
+    z-index: 1;
+    text-shadow:
+        0 0 24px var(--bg),
+        0 0 48px var(--bg),
+        0 0 8px var(--bg);
+}
+
+.brand-letter {
+    color: var(--accent);
+    font-style: italic;
 }
 
 .profile-image-flipper {
@@ -144,7 +159,7 @@ body[data-theme="light"] .sun-icon  { display: none; }
     backface-visibility: hidden;
     border-radius: 50%;
     overflow: hidden;
-    border: 1px solid var(--border);
+    border: none;
     background-color: var(--bg-card);
 }
 
@@ -165,8 +180,10 @@ body[data-theme="light"] .sun-icon  { display: none; }
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-top: 1.75rem;
+    margin-top: 1.25rem;
     margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-role {
@@ -683,11 +700,10 @@ footer {
 
 /* ── Responsive ─────────────────────────────────────────────── */
 @media (max-width: 768px) {
-    .hero { padding: 3.5rem 0 1.5rem; }
+    .hero { padding: 0 0 1.5rem; }
 
     .profile-image-container {
-        width: 84px;
-        height: 84px;
+        margin-bottom: -2.5rem;
     }
 
     .hero-navigation {
