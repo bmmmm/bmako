@@ -393,7 +393,9 @@ body[data-theme="light"] .sun-icon  { display: none; }
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--accent);
 }
 
 .edu-list {
@@ -471,15 +473,15 @@ body[data-theme="light"] .sun-icon  { display: none; }
 /* ── Buttons ────────────────────────────────────────────────── */
 .button {
     display: inline-block;
-    padding: 0.65rem 1.5rem;
+    padding: 0.85rem 2.5rem;
     background-color: transparent;
     color: var(--text) !important;
     border-radius: 0;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     border: 1px solid var(--border);
     cursor: pointer;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: border-color 0.2s ease, color 0.2s ease;
     box-shadow: none;
@@ -503,19 +505,26 @@ body[data-theme="light"] .sun-icon  { display: none; }
 }
 
 /* ── Contact ────────────────────────────────────────────────── */
+#contact-section {
+    text-align: center;
+}
+
 .contact-description {
     color: var(--text-muted);
-    margin-bottom: 1.75rem;
+    margin-bottom: 2rem;
     line-height: 1.6;
     font-size: 0.875rem;
     max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .email-reveal {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1.5rem;
-    margin-top: 1.25rem;
+    margin-top: 1.75rem;
     padding-top: 1.25rem;
     border-top: 1px solid var(--border);
 }
