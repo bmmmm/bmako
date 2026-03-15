@@ -171,6 +171,13 @@
                 </nav>
             </div>
 
+            <!-- Über mich -->
+            <section class="section">
+                <h2 class="section-title">Über mich</h2>
+                <p class="about-text">Technik fasziniert mich – das war schon immer so und hört nicht auf. Seit 2018 stecke ich täglich tief drin: reale Systeme, realer Druck, keine Kompromisse. Das wollte ich nicht für mich behalten. Es macht einfach mehr Freude, wenn es bei anderen auch funktioniert.</p>
+                <p class="about-location">Remote und vor Ort in Bonn.</p>
+            </section>
+
             <!-- Services -->
             <section id="services-section" class="section services">
                 <h2 class="section-title">Dienstleistungen</h2>
@@ -256,8 +263,22 @@
                 </div>
 
                 <div class="hintergrund-block">
-                    <p class="hintergrund-label">Ausbildung</p>
+                    <p class="hintergrund-label">Hintergrund</p>
                     <div class="edu-list">
+                        <div class="edu-item">
+                            <span class="edu-degree">seit '22</span>
+                            <div class="edu-body">
+                                <p class="edu-title">Senior Expert IT Support</p>
+                                <p class="edu-institution">Enterprise IT</p>
+                            </div>
+                        </div>
+                        <div class="edu-item">
+                            <span class="edu-degree">'18 – '22</span>
+                            <div class="edu-body">
+                                <p class="edu-title">Expert IT Support</p>
+                                <p class="edu-institution">Enterprise IT</p>
+                            </div>
+                        </div>
                         <div class="edu-item">
                             <span class="edu-degree">M.Sc.</span>
                             <div class="edu-body">
@@ -273,23 +294,22 @@
                             </div>
                         </div>
                     </div>
-                    <p class="edu-languages">Deutsch · Englisch · Français</p>
+                    <p class="edu-languages"><span class="edu-lang-label">Sprachen</span>Deutsch · Englisch · Français</p>
                 </div>
             </section>
 
             <!-- Contact -->
-            <section id="contact-section" class="section contact-container">
+            <section id="contact-section" class="section">
                 <h2 class="section-title">Kontakt</h2>
                 <p class="contact-description">Kurze Nachricht genügt – ich melde mich so schnell wie möglich.</p>
 
-                <button id="contact-button" class="button button-center">
+                <button id="contact-button" class="button">
                     <span>E-Mail anzeigen</span>
                 </button>
 
-                <div id="email-container" class="email-container hidden">
-                    <p>Meine E-Mail:</p>
+                <div id="email-container" class="email-reveal hidden">
                     <a id="email-link" class="protected-email" href="#" aria-label="E-Mail senden"></a>
-                    <p id="email-copy-instruction">Klicken zum Schreiben · Rechtsklick zum Kopieren</p>
+                    <span class="email-hint">Klicken · Rechtsklick zum Kopieren</span>
                 </div>
             </section>
 
@@ -305,7 +325,7 @@
 
         <footer>
             <div class="footer-content">
-                <p>&copy; <span id="footer-year"></span> Bartosz Makosch · <time datetime="2026-03">Stand: März 2026</time></p>
+                <p>&copy; <span id="footer-year"></span> Bartosz Makosch</p>
                 <nav class="footer-links" aria-label="Footer-Navigation">
                     <a href="#services-section">Dienstleistungen</a>
                     <a href="#referenzen-section">Referenzen</a>

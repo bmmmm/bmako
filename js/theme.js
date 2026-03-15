@@ -33,24 +33,30 @@ class ThemeManager {
     });
   }
 
-  // Function to initialize theme based on user preference or system preference
+  // Initialize theme: only apply saved override, let CSS handle system preference
   initTheme() {
     const savedTheme = localStorage.getItem("theme");
-
     if (savedTheme) {
       document.body.dataset.theme = savedTheme;
-    } else if (this.systemDarkModeQuery.matches) {
-      document.body.dataset.theme = "dark";
     }
+    // No saved preference → CSS prefers-color-scheme handles it automatically
   }
 
-  // Function to toggle between light and dark themes
+  // Toggle theme; if result matches system preference, clear override so
+  // future visits auto-follow system again
   toggleTheme() {
-    const currentTheme = document.body.dataset.theme || "light";
+    const currentTheme = document.body.dataset.theme ||
+      (this.systemDarkModeQuery.matches ? "dark" : "light");
     const newTheme = currentTheme === "dark" ? "light" : "dark";
+    const systemTheme = this.systemDarkModeQuery.matches ? "dark" : "light";
 
     document.body.dataset.theme = newTheme;
-    localStorage.setItem("theme", newTheme);
+
+    if (newTheme === systemTheme) {
+      localStorage.removeItem("theme"); // back to system default
+    } else {
+      localStorage.setItem("theme", newTheme);
+    }
   }
 
   // Get current theme
