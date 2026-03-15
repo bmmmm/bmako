@@ -93,14 +93,20 @@ function setupBackToTop() {
         progress.style.strokeDasharray = circumference;
         progress.style.strokeDashoffset = circumference;
     }
+    let ticking = false;
     window.addEventListener("scroll", () => {
-        btn.classList.toggle("visible", window.scrollY > 300);
-        if (progress) {
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = docHeight > 0 ? window.scrollY / docHeight : 0;
-            progress.style.strokeDashoffset = circumference * (1 - scrollPercent);
-        }
-    });
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            btn.classList.toggle("visible", window.scrollY > 300);
+            if (progress) {
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = docHeight > 0 ? window.scrollY / docHeight : 0;
+                progress.style.strokeDashoffset = circumference * (1 - scrollPercent);
+            }
+            ticking = false;
+        });
+    }, { passive: true });
     btn.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
         history.pushState(null, "", window.location.pathname);
