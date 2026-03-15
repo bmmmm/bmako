@@ -212,6 +212,21 @@ body[data-theme="light"] .sun-icon  { display: none; }
     color: var(--text);
 }
 
+/* ── About ──────────────────────────────────────────────────── */
+.about-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text);
+    max-width: 560px;
+}
+
+.about-location {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 1.25rem;
+    letter-spacing: 0.03em;
+}
+
 /* ── Services ───────────────────────────────────────────────── */
 .services-grid {
     display: flex;
