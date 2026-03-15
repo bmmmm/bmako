@@ -21,6 +21,21 @@
     --footer-text:   #7a7a7a;
 }
 
+[data-theme="dark"] {
+    --bg:            #0c0c0c;
+    --bg-card:       #141414;
+    --bg-subtle:     #1a1a1a;
+    --text:          #f0efec;
+    --text-muted:    #a0a0a0;
+    --primary:       #6b96ff;
+    --primary-hover: #5a85ff;
+    --accent:        #d4a43a;
+    --border:        rgba(255, 255, 255, 0.12);
+    --shadow:        rgba(0, 0, 0, 0.6);
+    --footer-bg:     #080808;
+    --footer-text:   #7a7a7a;
+}
+
 [data-theme="light"] {
     --bg:            #f5f4f0;
     --bg-card:       #eeede8;
