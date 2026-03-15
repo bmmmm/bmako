@@ -203,13 +203,28 @@ body[data-theme="light"] .sun-icon  { display: none; }
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0;
+    padding-bottom: 2px;
     position: relative;
     transition: color 0.2s;
 }
 
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.25s ease;
+}
+
 .nav-link:hover {
-    color: var(--text);
+    color: var(--accent);
+}
+
+.nav-link:hover::after {
+    width: 100%;
 }
 
 /* ── About ──────────────────────────────────────────────────── */
@@ -246,13 +261,12 @@ body[data-theme="light"] .sun-icon  { display: none; }
     background: transparent;
     align-items: start;
     text-align: left;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .service-card:hover {
     border-left-color: var(--accent);
-    transform: none;
-    box-shadow: none;
+    background-color: var(--bg-subtle);
 }
 
 .service-icon {
@@ -261,6 +275,11 @@ body[data-theme="light"] .sun-icon  { display: none; }
     line-height: 1;
     padding-top: 0.15rem;
     margin-bottom: 0;
+    transition: transform 0.2s ease;
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.15);
 }
 
 .service-card h3 {
@@ -446,7 +465,6 @@ body[data-theme="light"] .sun-icon  { display: none; }
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-muted);
-    opacity: 0.6;
     margin-right: 0.75rem;
 }
 
@@ -525,7 +543,7 @@ footer {
     background-color: var(--footer-bg);
     padding: 2rem 1.5rem;
     margin-top: 6rem;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     transition: background-color 0.3s ease;
 }
 
@@ -560,7 +578,7 @@ footer {
 }
 
 .footer-links a:hover {
-    color: var(--accent);
+    color: #d4a43a;
 }
 
 .linkedin-link {
@@ -578,13 +596,11 @@ footer {
 .footer-legal a {
     color: var(--footer-text);
     font-size: 0.7rem;
-    opacity: 0.6;
-    transition: opacity 0.2s;
+    transition: color 0.2s;
 }
 
 .footer-legal a:hover {
-    opacity: 1;
-    color: var(--accent);
+    color: #d4a43a;
 }
 
 /* ── Legal pages ───────────────────────────────────────────── */
@@ -648,7 +664,6 @@ footer {
     margin-top: 2.5rem;
     font-size: 0.75rem;
     color: var(--text-muted);
-    opacity: 0.5;
 }
 
 .legal-footer-links {
