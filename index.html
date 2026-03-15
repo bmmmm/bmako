@@ -119,8 +119,8 @@
         }
         </script>
 
-        <!-- Preload LCP image -->
-        <link rel="preload" as="image" href="images/profile.jpeg" fetchpriority="high" />
+        <!-- Preload LCP image (WebP for modern browsers) -->
+        <link rel="preload" as="image" href="images/profile.webp" type="image/webp" fetchpriority="high" />
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/base.css" />
@@ -146,10 +146,16 @@
                 <div class="profile-image-container" tabindex="0" role="button" aria-label="Profilbild umdrehen">
                     <div class="profile-image-flipper">
                         <div class="profile-image-front">
-                            <img src="images/profile.jpeg" alt="Bartosz Makosch" class="profile-image" loading="eager" fetchpriority="high" />
+                            <picture>
+                                <source srcset="images/profile.webp" type="image/webp" />
+                                <img src="images/profile.jpeg" alt="Bartosz Makosch" class="profile-image" loading="eager" fetchpriority="high" />
+                            </picture>
                         </div>
                         <div class="profile-image-back">
-                            <img src="images/backside.jpeg" alt="Bartosz Makosch – Rückseite" class="profile-image" loading="lazy" />
+                            <picture>
+                                <source srcset="images/backside.webp" type="image/webp" />
+                                <img src="images/backside.jpeg" alt="Bartosz Makosch – Rückseite" class="profile-image" loading="lazy" />
+                            </picture>
                         </div>
                     </div>
                 </div>
