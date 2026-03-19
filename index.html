@@ -186,7 +186,7 @@
         </script>
 
         <!-- Preload LCP image (WebP for modern browsers) -->
-        <link rel="preload" as="image" href="images/profile.webp" type="image/webp" fetchpriority="high" />
+        <link rel="preload" as="image" href="images/profile-banner.webp" type="image/webp" fetchpriority="high" />
 
         <!-- CSS -->
         <link rel="stylesheet" href="css/base.css" />
@@ -216,21 +216,17 @@
             <!-- Hero -->
             <section class="hero-section">
                 <div class="hero-banner" tabindex="0" role="button" aria-label="Profilbild umdrehen – Theme wechseln">
-                    <div class="hero-banner-backdrop">
-                        <img src="images/profile.jpeg" alt="" aria-hidden="true" loading="eager" />
-                    </div>
-                    <div class="hero-banner-vignette"></div>
                     <div class="hero-banner-flipper">
                         <div class="hero-banner-front">
                             <picture>
-                                <source srcset="images/profile.webp" type="image/webp" />
-                                <img src="images/profile.jpeg" alt="Bartosz Makosch" loading="eager" />
+                                <source srcset="images/profile-banner.webp" type="image/webp" />
+                                <img src="images/profile-banner.jpeg" alt="Bartosz Makosch" loading="eager" />
                             </picture>
                         </div>
                         <div class="hero-banner-back">
                             <picture>
-                                <source srcset="images/backside.webp" type="image/webp" />
-                                <img src="images/backside.jpeg" alt="Bartosz Makosch – Rückseite" loading="lazy" />
+                                <source srcset="images/backside-banner.webp" type="image/webp" />
+                                <img src="images/backside-banner.jpeg" alt="Bartosz Makosch – Rückseite" loading="lazy" />
                             </picture>
                         </div>
                     </div>

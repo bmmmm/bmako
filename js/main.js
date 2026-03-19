@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Signal that JS is running — enables fade-in animations
+    document.documentElement.classList.add('js-ready');
+
     // Dynamic copyright year
     var yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
