@@ -2,8 +2,7 @@
 
 ## Skills
 
-This project uses the official Anthropic **frontend-design** skill.
-Skill file: `.claude/skills/frontend-design/SKILL.md`
+This project uses the global **frontend-design** skill (`~/.claude/skills/frontend-design/SKILL.md`).
 
 Apply this skill whenever building or refining any visual component, section, or layout.
 Key mandate: no generic AI aesthetics, no predictable purple gradients, no overused fonts.
