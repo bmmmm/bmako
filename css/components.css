@@ -80,13 +80,14 @@
 /* ── Hero section ────────────────────────────────────────────── */
 .hero-section {
     background: var(--bg);
+    margin-top: 16px;
 }
 
 /* Product-style image banner */
 .hero-banner {
     position: relative;
     width: 100%;
-    height: clamp(300px, 50vw, 520px);
+    height: clamp(240px, 40vw, 420px);
     overflow: hidden;
     cursor: pointer;
     perspective: 1200px;
