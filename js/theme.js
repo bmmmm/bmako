@@ -1,69 +1,69 @@
 /**
- * Theme Manager - Handles theme switching functionality
+ * Theme Manager - Handles theme switching via hero banner flip
+ * Dark (Midnight) is default; Light (Snow) is alternate via data-theme="light"
  */
-class ThemeManager {
-  constructor() {
-    this.systemDarkModeQuery = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    );
-    this.init();
-  }
+(function () {
+    var systemDarkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-  init() {
-    // Initialize theme
-    this.initTheme();
+    // Determine current effective theme
+    function getCurrentTheme() {
+        var ds = document.body.dataset.theme;
+        if (ds === 'light' || ds === 'dark') return ds;
+        // No explicit override — use system preference
+        return systemDarkQuery.matches ? 'dark' : 'light';
+    }
 
-    // Add event listener after modules are loaded
-    document.addEventListener("DOMContentLoaded", () => {
-      // Theme toggle handler using event delegation for better performance
-      document.addEventListener("click", (e) => {
-        if (e.target.closest("#theme-toggle")) {
-          this.toggleTheme();
+    // Apply theme visually and update back-to-top light-mode class
+    function applyThemeVisuals() {
+        var theme = getCurrentTheme();
+        var isLight = theme === 'light';
+
+        // Back-to-top light mode class
+        var btt = document.getElementById('back-to-top');
+        if (btt) btt.classList.toggle('light-mode', isLight);
+
+        // Scroll progress ring accent color
+        var ring = document.getElementById('scroll-progress');
+        if (ring) {
+            ring.style.stroke = getComputedStyle(document.body).getPropertyValue('--accent').trim();
         }
-      });
+    }
 
-      // Listen for system theme preference changes
-      this.systemDarkModeQuery.addEventListener("change", (e) => {
-        if (!localStorage.getItem("theme")) {
-          // Only change theme automatically if user hasn't set a preference
-          const newTheme = e.matches ? "dark" : "light";
-          document.body.dataset.theme = newTheme;
+    // Toggle between dark and light
+    function toggleTheme() {
+        var current = getCurrentTheme();
+        var next = current === 'dark' ? 'light' : 'dark';
+        var systemTheme = systemDarkQuery.matches ? 'dark' : 'light';
+
+        document.body.dataset.theme = next;
+
+        if (next === systemTheme) {
+            localStorage.removeItem('theme');
+        } else {
+            localStorage.setItem('theme', next);
         }
-      });
+
+        applyThemeVisuals();
+    }
+
+    // Listen for system preference changes (only if no manual override)
+    systemDarkQuery.addEventListener('change', function (e) {
+        if (!localStorage.getItem('theme')) {
+            // Remove explicit attribute to let CSS @media handle it
+            delete document.body.dataset.theme;
+            applyThemeVisuals();
+        }
     });
-  }
 
-  // Initialize theme: only apply saved override, let CSS handle system preference
-  initTheme() {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-      document.body.dataset.theme = savedTheme;
-    }
-    // No saved preference → CSS prefers-color-scheme handles it automatically
-  }
+    // Apply visuals once DOM is ready
+    document.addEventListener('DOMContentLoaded', function () {
+        applyThemeVisuals();
+    });
 
-  // Toggle theme; if result matches system preference, clear override so
-  // future visits auto-follow system again
-  toggleTheme() {
-    const currentTheme = document.body.dataset.theme ||
-      (this.systemDarkModeQuery.matches ? "dark" : "light");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    const systemTheme = this.systemDarkModeQuery.matches ? "dark" : "light";
-
-    document.body.dataset.theme = newTheme;
-
-    if (newTheme === systemTheme) {
-      localStorage.removeItem("theme"); // back to system default
-    } else {
-      localStorage.setItem("theme", newTheme);
-    }
-  }
-
-  // Get current theme
-  getCurrentTheme() {
-    return document.body.dataset.theme || "light";
-  }
-}
-
-// Initialize the theme manager
-window.themeManager = new ThemeManager();
+    // Expose for use by main.js (hero banner flip)
+    window.themeManager = {
+        toggleTheme: toggleTheme,
+        getCurrentTheme: getCurrentTheme,
+        applyThemeVisuals: applyThemeVisuals
+    };
+})();

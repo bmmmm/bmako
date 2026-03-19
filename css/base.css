@@ -5,73 +5,57 @@
     box-sizing: border-box;
 }
 
-/* ── Color system ───────────────────────────────────────────── */
+/* ── Color system (Dark / Midnight = default) ────────────────── */
 :root {
-    --bg:            #0c0c0c;
-    --bg-card:       #141414;
-    --bg-subtle:     #1a1a1a;
-    --text:          #f0efec;
-    --text-muted:    #a0a0a0;
-    --primary:       #6b96ff;
-    --primary-hover: #5a85ff;
-    --accent:        #d4a43a;
-    --border:        rgba(255, 255, 255, 0.12);
-    --shadow:        rgba(0, 0, 0, 0.6);
-    --footer-bg:     #080808;
-    --footer-text:   #7a7a7a;
+    --bg: #000000;
+    --bg-alt: #101010;
+    --bg-elevated: #1c1c1e;
+    --text: #f5f5f7;
+    --text-secondary: #86868b;
+    --accent: #2997ff;
+    --accent-hover: #0077ed;
+    --border: rgba(255,255,255,0.08);
+    --banner-bg: #1d1d1f;
+    --banner-text: #f5f5f7;
+    --nav-bg: rgba(0,0,0,0.8);
 }
 
-[data-theme="dark"] {
-    --bg:            #0c0c0c;
-    --bg-card:       #141414;
-    --bg-subtle:     #1a1a1a;
-    --text:          #f0efec;
-    --text-muted:    #a0a0a0;
-    --primary:       #6b96ff;
-    --primary-hover: #5a85ff;
-    --accent:        #d4a43a;
-    --border:        rgba(255, 255, 255, 0.12);
-    --shadow:        rgba(0, 0, 0, 0.6);
-    --footer-bg:     #080808;
-    --footer-text:   #7a7a7a;
-}
-
+/* Light / Snow theme */
 [data-theme="light"] {
-    --bg:            #f5f4f0;
-    --bg-card:       #eeede8;
-    --bg-subtle:     #e5e4de;
-    --text:          #0f0f0f;
-    --text-muted:    #4a4a4a;
-    --primary:       #2d5be3;
-    --primary-hover: #1e4acf;
-    --accent:        #8a6318;
-    --border:        rgba(0, 0, 0, 0.1);
-    --shadow:        rgba(0, 0, 0, 0.1);
-    --footer-bg:     #111111;
-    --footer-text:   #999999;
+    --bg: #ffffff;
+    --bg-alt: #f5f5f7;
+    --bg-elevated: #fbfbfd;
+    --text: #1d1d1f;
+    --text-secondary: #48484a;
+    --accent: #0066cc;
+    --accent-hover: #004499;
+    --border: rgba(0,0,0,0.08);
+    --banner-bg: #1d1d1f;
+    --banner-text: #f5f5f7;
+    --nav-bg: rgba(255,255,255,0.8);
 }
 
+/* Auto-detect system light preference when no localStorage override */
 @media (prefers-color-scheme: light) {
-    body:not([data-theme="dark"]) {
-        --bg:            #f5f4f0;
-        --bg-card:       #eeede8;
-        --bg-subtle:     #e5e4de;
-        --text:          #0f0f0f;
-        --text-muted:    #4a4a4a;
-        --primary:       #2d5be3;
-        --primary-hover: #1e4acf;
-        --accent:        #8a6318;
-        --border:        rgba(0, 0, 0, 0.1);
-        --shadow:        rgba(0, 0, 0, 0.1);
-        --footer-bg:     #111111;
-        --footer-text:   #999999;
+    body:not([data-theme="dark"]):not([data-theme="light"]) {
+        --bg: #ffffff;
+        --bg-alt: #f5f5f7;
+        --bg-elevated: #fbfbfd;
+        --text: #1d1d1f;
+        --text-secondary: #48484a;
+        --accent: #0066cc;
+        --accent-hover: #004499;
+        --border: rgba(0,0,0,0.08);
+        --banner-bg: #1d1d1f;
+        --banner-text: #f5f5f7;
+        --nav-bg: rgba(255,255,255,0.8);
     }
 }
 
-/* ── Typography ─────────────────────────────────────────────── */
+/* ── Typography ──────────────────────────────────────────────── */
 :root {
-    --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-            "Helvetica Neue", Arial, sans-serif;
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+            system-ui, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
 html {
@@ -83,110 +67,43 @@ body {
     font-family: var(--font);
     background-color: var(--bg);
     color: var(--text);
-    line-height: 1.65;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-h1 {
-    font-family: var(--font);
-    font-weight: 800;
-    letter-spacing: -0.04em;
-    line-height: 1;
-    font-size: clamp(3rem, 9vw, 5.5rem);
-    color: var(--text);
-}
-
-h2 {
-    font-family: var(--font);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-    font-size: clamp(1.4rem, 3vw, 1.8rem);
-    color: var(--text);
-}
-
-h3 {
-    font-family: var(--font);
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.25;
-    font-size: 0.95rem;
-    color: var(--text);
-}
-
 a {
-    color: var(--primary);
+    color: var(--accent);
     text-decoration: none;
-    transition: color 0.2s ease;
+    transition: color 0.2s;
 }
 
 a:hover {
-    color: var(--accent);
+    text-decoration: underline;
 }
 
-/* ── Utility ────────────────────────────────────────────────── */
+/* ── Utility ─────────────────────────────────────────────────── */
 .hidden { display: none !important; }
 
-/* ── Focus ──────────────────────────────────────────────────── */
+/* ── Focus ───────────────────────────────────────────────────── */
 :focus-visible {
-    outline: 1px solid var(--accent);
+    outline: 2px solid var(--accent);
     outline-offset: 4px;
     border-radius: 2px;
 }
 
-/* ── Layout ─────────────────────────────────────────────────── */
-header {
-    padding: 1.5rem;
-    position: relative;
-}
-
-main {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-}
-
-.section {
-    margin: 6rem 0;
-    opacity: 0;
-    transform: translateY(20px);
-    transition:
-        opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.section.fade-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Section label — tiny amber, left-aligned */
-.section-title {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-    text-align: left;
-    margin-bottom: 2.5rem;
-}
-
-.section-title::after {
-    display: none;
-}
-
-/* ── High contrast ──────────────────────────────────────────── */
+/* ── High contrast ───────────────────────────────────────────── */
 @media (forced-colors: active) {
     :focus-visible { outline: 2px solid CanvasText; }
 }
 
-/* ── Print ──────────────────────────────────────────────────── */
+/* ── Print ───────────────────────────────────────────────────── */
 @media print {
-    .hero-navigation, #theme-toggle, .back-to-top, #contact-button { display: none !important; }
+    .apple-nav, .top-banner, .back-to-top, .hero-banner { display: none !important; }
     * { background: white !important; color: black !important; box-shadow: none !important; }
     a { text-decoration: underline; }
-    .section { page-break-inside: avoid; opacity: 1; transform: none; }
+    .fade-in { opacity: 1 !important; transform: none !important; }
     body { font-size: 12pt; }
     h1, h2, h3 { page-break-after: avoid; }
     @page { margin: 2cm; }
