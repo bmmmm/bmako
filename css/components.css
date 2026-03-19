@@ -92,54 +92,11 @@
     perspective: 1200px;
 }
 
-/* Blurred backdrop */
-.hero-banner-backdrop {
-    position: absolute;
-    top: -40px;
-    left: -10%;
-    right: -10%;
-    bottom: -40px;
-    z-index: 0;
-    overflow: hidden;
-}
+/* Clean edge fade — no blurred backdrop, just solid gradients into bg */
+.hero-banner-backdrop { display: none; }
+.hero-banner-vignette { display: none; }
 
-.hero-banner-backdrop img {
-    width: 120%;
-    height: 140%;
-    object-fit: cover;
-    object-position: center;
-    filter: blur(70px) saturate(0.6) brightness(0.5);
-    transform: scale(1.2);
-    opacity: 0.6;
-}
-
-/* Light theme: subtle backdrop */
-[data-theme="light"] .hero-banner-backdrop img {
-    filter: blur(80px) saturate(0.15) brightness(1.4);
-    opacity: 0.2;
-}
-
-@media (prefers-color-scheme: light) {
-    body:not([data-theme="dark"]):not([data-theme="light"]) .hero-banner-backdrop img {
-        filter: blur(80px) saturate(0.15) brightness(1.4);
-        opacity: 0.2;
-    }
-}
-
-/* Multi-layer vignette */
-.hero-banner-vignette {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    background:
-        linear-gradient(180deg, var(--bg) 0%, transparent 30%, transparent 65%, var(--bg) 100%),
-        linear-gradient(90deg, var(--bg) 0%, transparent 25%, transparent 75%, var(--bg) 100%),
-        radial-gradient(ellipse 50% 80% at center, transparent 0%, var(--bg) 100%);
-    pointer-events: none;
-}
+/* Bottom fade into content */
 
 /* Flip mechanic */
 .hero-banner-flipper {
@@ -187,13 +144,13 @@
     overflow: visible;
 }
 
-/* Bottom fade into content */
+/* Thin bottom fade — clean edge into content */
 .hero-banner-fade {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 50%;
+    height: 60px;
     background: linear-gradient(transparent 0%, var(--bg) 100%);
     z-index: 3;
     pointer-events: none;
@@ -761,13 +718,19 @@ a.ref-tag:hover { color: var(--accent-hover); text-decoration: none; }
 }
 
 /* ── Fade-in animation ───────────────────────────────────────── */
+/* JS adds .js-ready to <html> — without it, everything is visible (graceful fallback) */
 .fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+html.js-ready .fade-in {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.fade-in.visible {
+html.js-ready .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
 }
