@@ -78,18 +78,19 @@
                 "latitude": 50.7374,
                 "longitude": 7.0982
               },
-              "areaServed": [
-                { "@type": "City", "name": "Bonn" },
-                { "@type": "City", "name": "Köln" },
-                { "@type": "City", "name": "Siegburg" },
-                { "@type": "City", "name": "Bad Godesberg" },
-                { "@type": "State", "name": "Nordrhein-Westfalen" }
-              ],
-              "openingHoursSpecification": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-                "opens": "09:00",
-                "closes": "18:00"
+              "areaServed": {
+                "@type": "GeoCircle",
+                "geoMidpoint": {
+                  "@type": "GeoCoordinates",
+                  "latitude": 50.7374,
+                  "longitude": 7.0982
+                },
+                "geoRadius": "15000"
+              },
+              "hoursAvailable": {
+                "@type": "ContactPoint",
+                "availableLanguage": ["de", "en", "fr"],
+                "description": "Termine nach Vereinbarung"
               },
               "founder": { "@id": "https://bmako.de/#person" },
               "sameAs": ["https://de.linkedin.com/in/bartosz-makosch"],
