@@ -100,7 +100,7 @@ a:hover {
 
 /* ── Print ───────────────────────────────────────────────────── */
 @media print {
-    .apple-nav, .top-banner, .back-to-top, .hero-banner { display: none !important; }
+    .site-nav, .top-banner, .back-to-top, .hero-banner { display: none !important; }
     * { background: white !important; color: black !important; box-shadow: none !important; }
     a { text-decoration: underline; }
     .fade-in { opacity: 1 !important; transform: none !important; }

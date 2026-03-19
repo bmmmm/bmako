@@ -1,5 +1,5 @@
-/* ── Apple-style navigation ──────────────────────────────────── */
-.apple-nav {
+/* ── Site navigation ─────────────────────────────────────────── */
+.site-nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,7 +9,7 @@
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     border-bottom: 1px solid var(--border);
-    height: 44px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,28 +17,28 @@
     padding: 0 24px;
 }
 
-.apple-nav .nav-logo {
-    font-size: 15px;
+.site-nav .nav-logo {
+    font-size: 17px;
     font-weight: 600;
     color: var(--text);
     text-decoration: none;
     letter-spacing: -0.02em;
 }
 
-.apple-nav .nav-logo:hover {
+.site-nav .nav-logo:hover {
     text-decoration: none;
     color: var(--text);
 }
 
-.apple-nav a {
-    font-size: 12px;
+.site-nav a {
+    font-size: 14px;
     font-weight: 400;
     color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.2s;
 }
 
-.apple-nav a:hover {
+.site-nav a:hover {
     color: var(--text);
     text-decoration: none;
 }
@@ -968,8 +968,8 @@ html.js-ready .fade-in.visible {
 
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 600px) {
-    .apple-nav { gap: 16px; }
-    .apple-nav a:not(.nav-logo) { font-size: 11px; }
+    .site-nav { gap: 16px; }
+    .site-nav a:not(.nav-logo) { font-size: 13px; }
     .hero-links { flex-direction: column; gap: 12px; }
     .about-grid { grid-template-columns: 1fr; }
     .ref-item { flex-direction: column; gap: 8px; }
