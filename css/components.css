@@ -847,6 +847,161 @@ a.ref-tag:hover { color: var(--accent-hover); text-decoration: none; }
     color: var(--accent);
 }
 
+/* ── Service subpages ────────────────────────────────────────── */
+.service-page-hero {
+    text-align: center;
+    padding: 120px 24px 80px;
+    background: var(--bg);
+}
+
+.service-page-emoji {
+    font-size: 56px;
+    margin-bottom: 20px;
+}
+
+.service-page-title {
+    font-size: clamp(44px, 8vw, 72px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    margin-bottom: 16px;
+    background: linear-gradient(180deg, var(--text) 30%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.service-page-subtitle {
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: -0.01em;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.service-page-content {
+    background: var(--bg-alt);
+    padding: 80px 24px;
+}
+
+.service-page-inner {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.service-page-inner h2 {
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+
+.service-page-inner h3 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    margin-top: 40px;
+    margin-bottom: 16px;
+}
+
+.service-page-inner p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.service-page-list {
+    list-style: none;
+    padding: 0;
+}
+
+.service-page-list li {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.service-page-list li:last-child { border-bottom: none; }
+.service-page-list strong { color: var(--text); font-weight: 600; }
+
+.service-page-cta {
+    text-align: center;
+    padding: 80px 24px;
+    background: var(--bg);
+}
+
+.service-page-cta h2 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+}
+
+.service-page-cta p {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+}
+
+.service-page-faq {
+    background: var(--bg-alt);
+    padding: 80px 24px;
+}
+
+.service-page-faq h2 {
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+}
+
+.service-page-faq details {
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+}
+
+.service-page-faq details:last-of-type { border-bottom: none; }
+
+.service-page-faq summary {
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.service-page-faq summary::-webkit-details-marker { display: none; }
+
+.service-page-faq summary::after {
+    content: '+';
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    transition: transform 0.2s;
+}
+
+.service-page-faq details[open] summary::after {
+    content: '−';
+}
+
+.service-page-faq details p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-top: 12px;
+    padding-right: 24px;
+}
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 600px) {
     .apple-nav { gap: 16px; }
