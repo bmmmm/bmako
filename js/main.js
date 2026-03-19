@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
     var yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+    // Show iMessage button on Apple devices (macOS, iOS, iPadOS)
+    if (/Mac|iPhone|iPad|iPod/.test(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document)) {
+        document.querySelectorAll('.imessage-btn').forEach(function (el) { el.style.display = 'inline-flex'; });
+    }
+
     // Initialize all features
     [setupKineticName, setupHeroBannerFlip, setupBannerCycle, setupContactProtection, setupLegalEmails, setupSmoothScrolling, setupScrollFadeIn, setupBackToTop]
         .forEach(function (fn) { try { fn(); } catch (e) { console.error(fn.name, e); } });
