@@ -3,12 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const yearEl = document.getElementById("footer-year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    setupContactProtection();
-    setupLegalEmails();
-    setupSmoothScrolling();
-    setupImageFlip();
-    setupScrollAnimations();
-    setupBackToTop();
+    [setupContactProtection, setupLegalEmails, setupSmoothScrolling, setupImageFlip, setupScrollAnimations, setupBackToTop]
+        .forEach(fn => { try { fn(); } catch (e) { console.error(fn.name, e); } });
 });
 
 function setupContactProtection() {
