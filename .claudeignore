@@ -1,0 +1,12 @@
+# Binary assets — no value for code analysis
+images/
+favicon/
+
+# macOS metadata
+.DS_Store
+
+# Rarely changed, low value
+robots.txt
+
+# VS Code workspace config
+*.code-workspace
