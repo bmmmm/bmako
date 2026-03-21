@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var yearEl = document.getElementById('footer-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Show iMessage button on Apple devices (macOS, iOS, iPadOS)
-    if (/Mac|iPhone|iPad|iPod/.test(navigator.platform) || (navigator.userAgent.includes('Mac') && 'ontouchend' in document)) {
+    // Show iMessage button on Apple devices (macOS, iOS, iPadOS) — any browser
+    var ua = navigator.userAgent;
+    if (/Macintosh|Mac OS X|iPhone|iPad|iPod/.test(ua)) {
         document.querySelectorAll('.imessage-btn').forEach(function (el) { el.style.display = 'inline-flex'; });
     }
 
@@ -164,18 +165,13 @@ function setupBannerCycle() {
 /* ── Contact email obfuscation ────────────────────────────────── */
 function setupContactProtection() {
     var contactBtn = document.getElementById('contact-button');
-    var emailContainer = document.getElementById('email-container');
-    var emailLink = document.getElementById('email-link');
-    if (!contactBtn || !emailContainer || !emailLink) return;
+    if (!contactBtn) return;
 
     var parts = ['hi', '@', 'bmako', '.de'];
 
     contactBtn.addEventListener('click', function () {
         var addr = parts[0] + parts[1] + parts[2] + parts[3];
-        emailLink.textContent = addr;
-        emailLink.href = 'mailto:' + addr + '?subject=Anfrage';
-        emailContainer.classList.remove('hidden');
-        contactBtn.classList.add('hidden');
+        window.location.href = 'mailto:' + addr + '?subject=Anfrage';
     });
 }
 
