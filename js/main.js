@@ -2,18 +2,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // Signal that JS is running — enables fade-in animations
     document.documentElement.classList.add('js-ready');
 
-    // Dynamic copyright year
-    var yearEl = document.getElementById('footer-year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
+    // Dynamic copyright year — index.html uses #footer-year, service subpages use .footer-year
+    var year = String(new Date().getFullYear());
+    document.querySelectorAll('#footer-year, .footer-year').forEach(function (el) { el.textContent = year; });
 
-    // Show iMessage button on Apple devices (macOS, iOS, iPadOS) — any browser
-    var ua = navigator.userAgent;
-    if (/Macintosh|Mac OS X|iPhone|iPad|iPod/.test(ua)) {
-        document.querySelectorAll('.imessage-btn').forEach(function (el) { el.style.display = 'inline-flex'; });
-    }
+    // iMessage button visibility is handled by <html class="is-apple"> + CSS
+    // (set by inline script in <head>) — no JS toggling needed here.
 
     // Initialize all features
-    [setupKineticName, setupHeroBannerFlip, setupBannerCycle, setupContactProtection, setupLegalEmails, setupSmoothScrolling, setupScrollFadeIn, setupBackToTop]
+    // Smooth-scrolling for anchor links is handled by CSS (scroll-behavior + scroll-padding-top in base.css).
+    [setupKineticName, setupHeroBannerFlip, setupBannerCycle, setupContactProtection, setupLegalEmails, setupScrollFadeIn, setupBackToTop]
         .forEach(function (fn) { try { fn(); } catch (e) { console.error(fn.name, e); } });
 });
 
@@ -116,7 +114,11 @@ function setupHeroBannerFlip() {
     });
 }
 
-/* ── Banner cycle (loads messages from data/banner-messages.json) ── */
+/* ── Banner cycle (loads messages from data/banner-messages.json) ──
+   Static HTML banner is a generic no-JS fallback. JS hydrates with the first JSON
+   message on mount (with fade) and then cycles through the rest. The HTML text is
+   intentionally NOT a copy of JSON[0] — that decoupling is what makes the banner
+   maintainable: JSON is the single source of truth for cycled messages. */
 function setupBannerCycle() {
     var banner = document.getElementById('top-banner');
     if (!banner) return;
@@ -125,41 +127,63 @@ function setupBannerCycle() {
     var linkEl = banner.querySelector('.top-banner-link');
     if (!textEl || !linkEl) return;
 
-    var INTERVAL = 6000; // ms between cycles
-    var FADE_DURATION = 400; // ms for fade transition (matches CSS)
-    var messages = null;
+    var INTERVAL = 6000;
+    var FADE_DURATION = 400; // must match CSS transition
+    var messages = [];
     var currentIdx = 0;
+    var timerId = null;
 
-    // Load messages from JSON file
-    fetch('data/banner-messages.json')
-        .then(function (res) { return res.json(); })
-        .then(function (data) {
-            if (!Array.isArray(data) || data.length < 2) return;
-            messages = data;
-            // Start cycling from second message (first is already in HTML)
-            currentIdx = 0;
-            setInterval(cycleNext, INTERVAL);
-        })
-        .catch(function () {
-            // JSON not available — keep static banner, no cycling
-        });
+    function render(idx) {
+        var msg = messages[idx];
+        textEl.textContent = msg.text;
+        linkEl.href = msg.link;
+        linkEl.textContent = msg.linkText + ' ';
+        var arrow = document.createElement('span');
+        arrow.className = 'arrow';
+        arrow.textContent = '›';
+        linkEl.appendChild(arrow);
+    }
 
-    function cycleNext() {
-        if (!messages) return;
-        currentIdx = (currentIdx + 1) % messages.length;
-        var msg = messages[currentIdx];
-
-        // Fade out
+    function fadeTo(idx) {
         banner.classList.add('fading');
-
-        // Swap content at midpoint, then fade in
         setTimeout(function () {
-            textEl.textContent = msg.text;
-            linkEl.href = msg.link;
-            linkEl.innerHTML = msg.linkText + ' <span class="arrow">›</span>';
+            render(idx);
             banner.classList.remove('fading');
         }, FADE_DURATION);
     }
+
+    function next() {
+        currentIdx = (currentIdx + 1) % messages.length;
+        fadeTo(currentIdx);
+    }
+
+    function startCycle() {
+        if (timerId || messages.length < 2) return;
+        timerId = setInterval(next, INTERVAL);
+    }
+
+    function stopCycle() {
+        if (!timerId) return;
+        clearInterval(timerId);
+        timerId = null;
+    }
+
+    fetch('data/banner-messages.json')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+            if (!Array.isArray(data) || !data.length) return;
+            messages = data;
+            fadeTo(0);
+            startCycle();
+        })
+        .catch(function () {
+            // JSON unavailable — keep static HTML banner, no cycling
+        });
+
+    // Pause when tab is hidden — saves battery and avoids catch-up bursts on resume
+    document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stopCycle(); else startCycle();
+    });
 }
 
 /* ── Contact email obfuscation ────────────────────────────────── */
@@ -184,26 +208,6 @@ function setupLegalEmails() {
     els.forEach(function (el) {
         el.textContent = addr;
         el.href = 'mailto:' + addr;
-    });
-}
-
-/* ── Smooth scrolling for anchor links ────────────────────────── */
-function setupSmoothScrolling() {
-    document.addEventListener('click', function (e) {
-        var anchor = e.target.closest('a[href^="#"]');
-        if (!anchor) return;
-        var href = anchor.getAttribute('href');
-        if (href === '#') return;
-        var target = document.querySelector(href);
-        if (!target) return;
-        e.preventDefault();
-        // Offset for fixed nav (44px)
-        var offset = 44 + 12;
-        window.scrollTo({
-            top: target.getBoundingClientRect().top + window.scrollY - offset,
-            behavior: 'smooth'
-        });
-        history.pushState(null, '', href);
     });
 }
 

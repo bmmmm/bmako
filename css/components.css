@@ -263,9 +263,12 @@
     transform: translateX(2px);
 }
 
-/* iMessage button — only visible on Apple devices */
+/* iMessage button — only visible on Apple devices.
+   Visibility is toggled by <html class="is-apple"> set by an inline script in <head>.
+   Both display rules carry an html-prefix so their specificity (0,1,1 / 0,2,1)
+   beats .contact-btn (0,1,0) — otherwise source-order would let .contact-btn win
+   for the contact-section button which carries .contact-btn .imessage-btn together. */
 .imessage-btn {
-    display: none;
     line-height: 1;
     transition: opacity 0.2s;
 }
@@ -276,7 +279,6 @@
 
 .imessage-contact {
     background: #34C759;
-    display: none;
     min-width: 200px;
     justify-content: center;
 }
@@ -286,9 +288,8 @@
     opacity: 1;
 }
 
-@supports (-webkit-touch-callout: none) {
-    .imessage-btn { display: inline-flex; }
-}
+html .imessage-btn { display: none; }
+html.is-apple .imessage-btn { display: inline-flex; }
 
 /* ── Full-width service sections ─────────────────────────────── */
 .service-section {
@@ -301,13 +302,11 @@
     justify-content: center;
 }
 
-.service-section:nth-child(odd) {
-    background: var(--bg);
-}
-
-.service-section:nth-child(even) {
-    background: var(--bg-alt);
-}
+/* Background alternation via explicit .bg-alt class on the HTML section.
+   Previous nth-child(odd/even) was fragile: adding any sibling section in <main>
+   would flip the entire pattern. */
+.service-section { background: var(--bg); }
+.service-section.bg-alt { background: var(--bg-alt); }
 
 .service-emoji {
     font-size: 48px;
@@ -324,12 +323,12 @@
 }
 
 /* Light theme: accent color for service name on alt-bg sections */
-[data-theme="light"] .service-section:nth-child(even) .service-name {
+[data-theme="light"] .service-section.bg-alt .service-name {
     color: var(--accent);
 }
 
 @media (prefers-color-scheme: light) {
-    body:not([data-theme="dark"]):not([data-theme="light"]) .service-section:nth-child(even) .service-name {
+    :root:not([data-theme="dark"]):not([data-theme="light"]) .service-section.bg-alt .service-name {
         color: var(--accent);
     }
 }
@@ -421,9 +420,9 @@
 [data-theme="light"] .about-section .about-location { color: var(--text-secondary); }
 
 @media (prefers-color-scheme: light) {
-    body:not([data-theme="dark"]):not([data-theme="light"]) .about-section .about-card-label { color: var(--accent); }
-    body:not([data-theme="dark"]):not([data-theme="light"]) .about-section .about-text span { color: var(--text-secondary); }
-    body:not([data-theme="dark"]):not([data-theme="light"]) .about-section .about-location { color: var(--text-secondary); }
+    :root:not([data-theme="dark"]):not([data-theme="light"]) .about-section .about-card-label { color: var(--accent); }
+    :root:not([data-theme="dark"]):not([data-theme="light"]) .about-section .about-text span { color: var(--text-secondary); }
+    :root:not([data-theme="dark"]):not([data-theme="light"]) .about-section .about-location { color: var(--text-secondary); }
 }
 
 .about-location {

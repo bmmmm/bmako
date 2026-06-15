@@ -35,9 +35,10 @@
     --nav-bg: rgba(255,255,255,0.8);
 }
 
-/* Auto-detect system light preference when no localStorage override */
+/* Auto-detect system light preference when no localStorage override.
+   data-theme is set on <html> by js/theme.js, hence :root selector. */
 @media (prefers-color-scheme: light) {
-    body:not([data-theme="dark"]):not([data-theme="light"]) {
+    :root:not([data-theme="dark"]):not([data-theme="light"]) {
         --bg: #ffffff;
         --bg-alt: #f5f5f7;
         --bg-elevated: #fbfbfd;
@@ -60,6 +61,8 @@
 
 html {
     scroll-behavior: smooth;
+    /* Offset anchor jumps so they land below the fixed top-nav (44px) + breathing room */
+    scroll-padding-top: 56px;
     font-size: 16px;
 }
 

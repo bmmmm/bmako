@@ -188,13 +188,16 @@
         <!-- Preload LCP image (WebP for modern browsers) -->
         <link rel="preload" as="image" href="images/profile-banner.webp" type="image/webp" fetchpriority="high" />
 
+        <!-- Site init: Apple detection, theme restore from localStorage, theme API.
+             Loaded sync (no defer) so it runs before first paint — prevents both
+             theme flash and iMessage-button flash on Apple devices. -->
+        <script src="js/theme.js"></script>
+
         <!-- CSS -->
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/components.css" />
     </head>
     <body>
-        <!-- Inline theme init: prevents flash of wrong theme for returning visitors -->
-        <script>(function(){var t=localStorage.getItem('theme');if(t)document.body.dataset.theme=t;})();</script>
 
         <!-- Fixed nav bar -->
         <nav class="site-nav">
@@ -207,9 +210,10 @@
             <a href="#contact">Kontakt</a>
         </nav>
 
-        <!-- Top announcement banner (cycles through data/banner-messages.json) -->
+        <!-- Top announcement banner — generic no-JS fallback text.
+             JS hydrates with data/banner-messages.json on mount and cycles. -->
         <div class="top-banner" id="top-banner">
-            <span class="top-banner-text">Jetzt verfügbar: KI-Workshops für Teams und Unternehmen.</span> <a class="top-banner-link" href="#svc-workshops">Mehr erfahren <span class="arrow">›</span></a>
+            <span class="top-banner-text">Persönliche IT-Beratung aus Bonn.</span> <a class="top-banner-link" href="#contact">Kontakt aufnehmen <span class="arrow">›</span></a>
         </div>
 
         <main>
@@ -251,7 +255,7 @@
             </section>
 
             <!-- Service: Apple -->
-            <section class="service-section fade-in" id="svc-apple">
+            <section class="service-section bg-alt fade-in" id="svc-apple">
                 <div class="service-emoji">🍎</div>
                 <p class="service-name">Apple-Ökosystem</p>
                 <h2 class="service-headline">Alles spielt zusammen.<br>Ohne Kompromisse.</h2>
@@ -275,7 +279,7 @@
             </section>
 
             <!-- Service: Cloud -->
-            <section class="service-section fade-in" id="svc-cloud">
+            <section class="service-section bg-alt fade-in" id="svc-cloud">
                 <div class="service-emoji">☁️</div>
                 <p class="service-name">Microsoft Cloud</p>
                 <h2 class="service-headline">Teams. SharePoint. Azure.<br>Sauber aufgesetzt.</h2>
@@ -299,7 +303,7 @@
             </section>
 
             <!-- Service: Datenschutz -->
-            <section class="service-section fade-in" id="svc-datenschutz">
+            <section class="service-section bg-alt fade-in" id="svc-datenschutz">
                 <div class="service-emoji">🔒</div>
                 <p class="service-name">Datenschutz &amp; Selfhosting</p>
                 <h2 class="service-headline">Ihre Daten.<br>Bei Ihnen.</h2>
@@ -445,14 +449,14 @@
 
         <!-- Footer -->
         <footer class="site-footer">
-            <p>&copy; <span id="footer-year"></span> <strong>B</strong>artosz <strong>M</strong><strong>a</strong><strong>k</strong><strong>o</strong>sch</p>
+            <p>&copy; <span id="footer-year">2026</span> <strong>B</strong>artosz <strong>M</strong><strong>a</strong><strong>k</strong><strong>o</strong>sch</p>
             <div class="footer-links">
                 <a href="impressum.html">Impressum</a>
                 <a href="datenschutz.html">Datenschutz</a>
+                <a href="https://de.linkedin.com/in/bartosz-makosch" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </div>
         </footer>
 
-        <script src="js/theme.js"></script>
         <script src="js/main.js" defer></script>
     </body>
 </html>
