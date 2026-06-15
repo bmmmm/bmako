@@ -14,6 +14,10 @@
     --text-secondary: #86868b;
     --accent: #2997ff;
     --accent-hover: #0077ed;
+    /* Button background: white text needs ≥4.5:1, which the bright link-accent
+       (#2997ff = 3.0:1) fails. Darker blue for solid buttons only — links keep --accent. */
+    --btn-bg: #1866c4;
+    --btn-bg-hover: #0f56a8;
     --border: rgba(255,255,255,0.08);
     --banner-bg: #1d1d1f;
     --banner-text: #f5f5f7;
@@ -29,6 +33,10 @@
     --text-secondary: #48484a;
     --accent: #0066cc;
     --accent-hover: #004499;
+    /* Light-theme accent (#0066cc) already passes AA for white text (5.6:1),
+       so button bg == accent here. */
+    --btn-bg: #0066cc;
+    --btn-bg-hover: #004499;
     --border: rgba(0,0,0,0.08);
     --banner-bg: #1d1d1f;
     --banner-text: #f5f5f7;
@@ -46,6 +54,8 @@
         --text-secondary: #48484a;
         --accent: #0066cc;
         --accent-hover: #004499;
+        --btn-bg: #0066cc;
+        --btn-bg-hover: #004499;
         --border: rgba(0,0,0,0.08);
         --banner-bg: #1d1d1f;
         --banner-text: #f5f5f7;
@@ -89,6 +99,27 @@ a:hover {
 /* ── Utility ─────────────────────────────────────────────────── */
 .hidden { display: none !important; }
 
+/* ── Skip link (keyboard a11y, WCAG 2.4.1) ───────────────────── */
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    transform: translateY(-110%);
+    padding: 10px 18px;
+    background: var(--btn-bg);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+    transition: transform 0.2s;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
 /* ── Focus ───────────────────────────────────────────────────── */
 :focus-visible {
     outline: 2px solid var(--accent);
@@ -99,6 +130,18 @@ a:hover {
 /* ── High contrast ───────────────────────────────────────────── */
 @media (forced-colors: active) {
     :focus-visible { outline: 2px solid CanvasText; }
+}
+
+/* ── Reduced motion: honor user preference (WCAG 2.3.3) ──────── */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    /* Ensure scroll-revealed content is shown without the fade transition */
+    html.js-ready .fade-in { opacity: 1 !important; transform: none !important; }
 }
 
 /* ── Print ───────────────────────────────────────────────────── */

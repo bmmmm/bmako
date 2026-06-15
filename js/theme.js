@@ -40,6 +40,15 @@
         }
     }
 
+    // Keep the optional legal-page toggle button in sync with the active theme.
+    function syncToggleButton() {
+        var btn = document.getElementById('theme-toggle');
+        if (!btn) return;
+        var isDark = getCurrentTheme() === 'dark';
+        btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+        btn.setAttribute('aria-label', isDark ? 'Zum hellen Design wechseln' : 'Zum dunklen Design wechseln');
+    }
+
     function toggleTheme() {
         var current = getCurrentTheme();
         var next = current === 'dark' ? 'light' : 'dark';
@@ -52,16 +61,23 @@
             localStorage.setItem('theme', next);
         }
         applyThemeVisuals();
+        syncToggleButton();
     }
 
     systemDarkQuery.addEventListener('change', function () {
         if (!localStorage.getItem('theme')) {
             delete html.dataset.theme;
             applyThemeVisuals();
+            syncToggleButton();
         }
     });
 
-    document.addEventListener('DOMContentLoaded', applyThemeVisuals);
+    document.addEventListener('DOMContentLoaded', function () {
+        applyThemeVisuals();
+        var btn = document.getElementById('theme-toggle');
+        if (btn) btn.addEventListener('click', toggleTheme);
+        syncToggleButton();
+    });
 
     window.themeManager = {
         toggleTheme: toggleTheme,

@@ -32,6 +32,10 @@ function setupKineticName() {
         }
     }
     container.innerHTML = html;
+    // Decorative per-letter spans read awkwardly to screen readers; expose the
+    // full name as a single accessible label and treat the spans as one image.
+    container.setAttribute('role', 'img');
+    container.setAttribute('aria-label', nameText);
 
     // Expand/collapse logic
     var heroVisible = true;
@@ -71,15 +75,12 @@ function setupKineticName() {
         if (heroVisible && window.scrollY > 40) triggerExpand();
     }, { passive: true });
 
-    // Mouse movement triggers expand
+    // Mouse movement over the hero triggers expand. Listener is scoped to the
+    // hero element so it only fires there — no getBoundingClientRect per move.
     var heroSection = document.querySelector('.hero-section');
     if (heroSection) {
-        document.addEventListener('mousemove', function (e) {
-            if (!heroVisible) return;
-            var rect = heroSection.getBoundingClientRect();
-            if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
-                triggerExpand();
-            }
+        heroSection.addEventListener('mousemove', function () {
+            if (heroVisible) triggerExpand();
         }, { passive: true });
     }
 }
@@ -213,8 +214,9 @@ function setupLegalEmails() {
 
 /* ── Scroll fade-in (IntersectionObserver) ────────────────────── */
 function setupScrollFadeIn() {
-    if (!('IntersectionObserver' in window)) {
-        // Fallback: show all immediately
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+        // Reduced motion or no observer support: reveal everything immediately.
         document.querySelectorAll('.fade-in').forEach(function (el) {
             el.classList.add('visible');
         });
@@ -271,7 +273,16 @@ function setupBackToTop() {
         }
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+    // rAF-throttle: coalesce scroll bursts (esp. 120 Hz) into one DOM update per frame.
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+            ticking = false;
+            onScroll();
+        });
+    }, { passive: true });
     btn.addEventListener('click', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });

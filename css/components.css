@@ -583,7 +583,7 @@ a.ref-tag:hover { color: var(--accent-hover); text-decoration: none; }
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--accent);
+    background: var(--btn-bg);
     color: #fff;
     padding: 14px 28px;
     border-radius: 980px;
@@ -597,7 +597,7 @@ a.ref-tag:hover { color: var(--accent-hover); text-decoration: none; }
 }
 
 .contact-btn:hover {
-    background: var(--accent-hover);
+    background: var(--btn-bg-hover);
     transform: scale(1.02);
 }
 
@@ -842,6 +842,48 @@ html.js-ready .fade-in.visible {
 
 .legal-email {
     color: var(--accent);
+}
+
+/* ── Theme toggle (legal page header control) ────────────────── */
+.top-controls {
+    display: flex;
+    justify-content: flex-end;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 12px 24px 0;
+}
+
+#theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    border-radius: 980px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.2s, background 0.2s;
+}
+
+#theme-toggle:hover {
+    color: var(--text);
+    background: var(--bg-elevated);
+}
+
+#theme-toggle svg { fill: currentColor; display: block; }
+
+/* Icon reflects the action: sun = "switch to light" (shown in dark),
+   moon = "switch to dark" (shown in light/auto). */
+#theme-toggle .moon-icon { display: none; }
+#theme-toggle .sun-icon { display: block; }
+[data-theme="light"] #theme-toggle .sun-icon { display: none; }
+[data-theme="light"] #theme-toggle .moon-icon { display: block; }
+
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]):not([data-theme="light"]) #theme-toggle .sun-icon { display: none; }
+    :root:not([data-theme="dark"]):not([data-theme="light"]) #theme-toggle .moon-icon { display: block; }
 }
 
 /* ── Service subpages ────────────────────────────────────────── */
