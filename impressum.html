@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="robots" content="noindex, nofollow" />
+        <meta name="robots" content="noindex, follow" />
         <title>Impressum – Bartosz Makosch</title>
         <link rel="icon" href="favicon/favicon.ico" sizes="any" />
         <script src="js/theme.js"></script>
@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="css/components.css" />
     </head>
     <body>
+        <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
         <header>
             <div class="top-controls">
@@ -21,7 +22,7 @@
             </div>
         </header>
 
-        <main>
+        <main id="main-content">
             <div class="legal-page">
                 <a href="/" class="legal-back">&larr; Zurück zur Startseite</a>
 
@@ -35,7 +36,7 @@
                 </p>
 
                 <h2>Kontakt</h2>
-                <p>E-Mail: <a class="legal-email" href="#" aria-label="E-Mail senden"></a></p>
+                <p>E-Mail: <a class="legal-email" href="#" aria-label="E-Mail senden">hi&nbsp;[at]&nbsp;bmako&nbsp;[dot]&nbsp;de</a></p>
 
                 <h2>Berufsbezeichnung</h2>
                 <p>Ingenieur (M.Sc.) – IT-Beratung &amp; technischer Support<br>Kleingewerbetreibender</p>
@@ -59,11 +60,11 @@
         </main>
 
         <button id="back-to-top" class="back-to-top" aria-label="Zurück nach oben">
-            <svg class="back-to-top-ring" viewBox="0 0 44 44">
-                <circle class="back-to-top-track" cx="22" cy="22" r="20" />
-                <circle class="back-to-top-progress" cx="22" cy="22" r="20" />
+            <svg class="back-to-top-ring" viewBox="0 0 28 28">
+                <circle class="back-to-top-track" cx="14" cy="14" r="11.5" />
+                <circle class="back-to-top-progress" id="scroll-progress" cx="14" cy="14" r="11.5" />
             </svg>
-            <span class="back-to-top-arrow">↑</span>
+            <span class="back-to-top-label">Nach oben</span>
         </button>
 
         <footer>
