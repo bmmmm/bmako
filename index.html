@@ -21,9 +21,20 @@
         <meta property="og:title" content="IT-Beratung Bonn | Bartosz Makosch – Apple, KI, Cloud & SmartHome" />
         <meta property="og:url" content="https://bmako.de/" />
         <meta property="og:image" content="https://bmako.de/images/profile.jpeg" />
+        <meta property="og:image:width" content="768" />
+        <meta property="og:image:height" content="1024" />
+        <meta property="og:image:alt" content="Bartosz Makosch – IT-Berater aus Bonn" />
         <meta property="og:description" content="Ich mache Technik einfach. Persönliche IT-Beratung in Bonn vom Ingenieur – Apple, KI, Microsoft 365, SmartHome, Datenschutz. Ein Ansprechpartner statt Agentur." />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="de_DE" />
+        <meta property="og:site_name" content="Bartosz Makosch – IT-Beratung Bonn" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="IT-Beratung Bonn | Bartosz Makosch – Apple, KI, Cloud & SmartHome" />
+        <meta name="twitter:description" content="Ich mache Technik einfach. Persönliche IT-Beratung in Bonn vom Ingenieur – Apple, KI, Microsoft 365, SmartHome, Datenschutz." />
+        <meta name="twitter:image" content="https://bmako.de/images/profile.jpeg" />
+        <meta name="twitter:image:alt" content="Bartosz Makosch – IT-Berater aus Bonn" />
 
         <!-- Canonical -->
         <link rel="canonical" href="https://bmako.de/" />
@@ -65,7 +76,6 @@
               "url": "https://bmako.de/",
               "image": "https://bmako.de/images/profile.jpeg",
               "priceRange": "$$",
-              "telephone": "",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Bonn",
@@ -198,10 +208,11 @@
         <link rel="stylesheet" href="css/components.css" />
     </head>
     <body>
+        <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
         <!-- Fixed nav bar -->
-        <nav class="site-nav">
-            <a href="#" class="nav-logo">bmako</a>
+        <nav class="site-nav" aria-label="Hauptnavigation">
+            <a href="/" class="nav-logo">bmako</a>
             <a href="#svc-apple">Apple</a>
             <a href="#svc-ki">KI</a>
             <a href="#svc-cloud">Cloud</a>
@@ -216,7 +227,7 @@
             <span class="top-banner-text">Persönliche IT-Beratung aus Bonn.</span> <a class="top-banner-link" href="#contact">Kontakt aufnehmen <span class="arrow">›</span></a>
         </div>
 
-        <main>
+        <main id="main-content">
             <!-- Hero -->
             <section class="hero-section">
                 <div class="hero-banner" tabindex="0" role="button" aria-label="Profilbild umdrehen – Theme wechseln">
@@ -224,13 +235,13 @@
                         <div class="hero-banner-front">
                             <picture>
                                 <source srcset="images/profile-banner.webp" type="image/webp" />
-                                <img src="images/profile-banner.jpeg" alt="Bartosz Makosch" loading="eager" />
+                                <img src="images/profile-banner.jpeg" alt="Bartosz Makosch" loading="eager" decoding="async" width="768" height="520" />
                             </picture>
                         </div>
                         <div class="hero-banner-back">
                             <picture>
                                 <source srcset="images/backside-banner.webp" type="image/webp" />
-                                <img src="images/backside-banner.jpeg" alt="Bartosz Makosch – Rückseite" loading="lazy" />
+                                <img src="images/backside-banner.jpeg" alt="Bartosz Makosch – Rückseite" loading="lazy" decoding="async" width="768" height="520" />
                             </picture>
                         </div>
                     </div>
@@ -256,7 +267,7 @@
 
             <!-- Service: Apple -->
             <section class="service-section bg-alt fade-in" id="svc-apple">
-                <div class="service-emoji">🍎</div>
+                <div class="service-emoji" aria-hidden="true">🍎</div>
                 <p class="service-name">Apple-Ökosystem</p>
                 <h2 class="service-headline">Alles spielt zusammen.<br>Ohne Kompromisse.</h2>
                 <p class="service-desc">Von der Einrichtung bis zum laufenden Support – Ihr Apple-Ökosystem, nahtlos integriert.</p>
@@ -268,7 +279,7 @@
 
             <!-- Service: KI -->
             <section class="service-section fade-in" id="svc-ki">
-                <div class="service-emoji">🤖</div>
+                <div class="service-emoji" aria-hidden="true">🤖</div>
                 <p class="service-name">KI-Beratung</p>
                 <h2 class="service-headline">KI verstehen.<br>Gezielt einsetzen.</h2>
                 <p class="service-desc">Unabhängige Beratung zu KI-Tools, Workflow-Automatisierung und Potenzialanalyse.</p>
@@ -280,7 +291,7 @@
 
             <!-- Service: Cloud -->
             <section class="service-section bg-alt fade-in" id="svc-cloud">
-                <div class="service-emoji">☁️</div>
+                <div class="service-emoji" aria-hidden="true">☁️</div>
                 <p class="service-name">Microsoft Cloud</p>
                 <h2 class="service-headline">Teams. SharePoint. Azure.<br>Sauber aufgesetzt.</h2>
                 <p class="service-desc">Für Vereine und Unternehmen, die es richtig machen wollen.</p>
@@ -292,7 +303,7 @@
 
             <!-- Service: Workshops -->
             <section class="service-section fade-in" id="svc-workshops">
-                <div class="service-emoji">🎓</div>
+                <div class="service-emoji" aria-hidden="true">🎓</div>
                 <p class="service-name">Workshops &amp; Schulungen</p>
                 <h2 class="service-headline">Wissen, das bleibt.<br>Praxisnah vermittelt.</h2>
                 <p class="service-desc">Ihr Team auf den aktuellen Stand bringen – ob KI, Cloud oder Datenschutz.</p>
@@ -304,7 +315,7 @@
 
             <!-- Service: Datenschutz -->
             <section class="service-section bg-alt fade-in" id="svc-datenschutz">
-                <div class="service-emoji">🔒</div>
+                <div class="service-emoji" aria-hidden="true">🔒</div>
                 <p class="service-name">Datenschutz &amp; Selfhosting</p>
                 <h2 class="service-headline">Ihre Daten.<br>Bei Ihnen.</h2>
                 <p class="service-desc">Unabhängig von grossen Cloud-Anbietern – mit Lösungen, die wirklich zu Ihnen passen.</p>
@@ -316,7 +327,7 @@
 
             <!-- Service: SmartHome -->
             <section class="service-section fade-in" id="svc-smarthome">
-                <div class="service-emoji">🏠</div>
+                <div class="service-emoji" aria-hidden="true">🏠</div>
                 <p class="service-name">SmartHome &amp; IoT</p>
                 <h2 class="service-headline">Smart leben.<br>Ohne Cloud-Zwang.</h2>
                 <p class="service-desc">Herstellerunabhängig, auf Wunsch komplett ohne Cloud. Ihre Privatsphäre bleibt geschützt.</p>
@@ -415,7 +426,7 @@
                         <span class="ref-num">05</span>
                         <div>
                             <p class="ref-title">vfcd.org – Website &amp; IT für einen Verein</p>
-                            <p class="ref-desc">Komplette Betreuung der IT-Infrastruktur und des Webauftritts.</p>
+                            <p class="ref-desc">Komplette Betreuung der IT-Infrastruktur und des Webauftritts. <a href="it-beratung-vereine.html">IT-Beratung für Vereine&nbsp;›</a></p>
                         </div>
                         <a href="https://vfcd.org" target="_blank" rel="noopener noreferrer" class="ref-tag">vfcd.org ↗</a>
                     </div>
