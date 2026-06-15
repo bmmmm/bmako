@@ -1041,6 +1041,33 @@ html.js-ready .fade-in.visible {
     padding-right: 24px;
 }
 
+/* Related services — internal topic-cluster links on subpages */
+.related-services {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+    text-align: center;
+    font-size: 15px;
+    color: var(--text-secondary);
+    background: var(--bg);
+}
+
+.related-services .related-label {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.related-services a {
+    color: var(--accent);
+    white-space: nowrap;
+}
+
+.related-services a:not(:last-child) { margin-right: 6px; }
+
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 600px) {
     .site-nav { gap: 16px; }

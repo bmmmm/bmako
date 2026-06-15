@@ -14,15 +14,27 @@
         <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
         <link rel="icon" href="favicon/favicon.ico" sizes="any" />
+        <link rel="manifest" href="favicon/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
 
         <!-- Open Graph -->
         <meta property="og:title" content="SmartHome Beratung Bonn | Heimautomatisierung ohne Cloud" />
         <meta property="og:url" content="https://bmako.de/smarthome-beratung-bonn.html" />
         <meta property="og:image" content="https://bmako.de/images/profile.jpeg" />
+        <meta property="og:image:width" content="768" />
+        <meta property="og:image:height" content="1024" />
+        <meta property="og:image:alt" content="Bartosz Makosch – IT-Berater aus Bonn" />
         <meta property="og:description" content="SmartHome Beratung in Bonn – Heimautomatisierung herstellerunabhängig, datenschutzfreundlich und optional komplett ohne Cloud." />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="de_DE" />
+        <meta property="og:site_name" content="Bartosz Makosch – IT-Beratung Bonn" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="SmartHome Beratung Bonn | Heimautomatisierung ohne Cloud" />
+        <meta name="twitter:description" content="SmartHome Beratung in Bonn – Heimautomatisierung herstellerunabhängig, datenschutzfreundlich und optional komplett ohne Cloud." />
+        <meta name="twitter:image" content="https://bmako.de/images/profile.jpeg" />
+        <meta name="twitter:image:alt" content="Bartosz Makosch – IT-Berater aus Bonn" />
 
         <!-- Canonical -->
         <link rel="canonical" href="https://bmako.de/smarthome-beratung-bonn.html" />
@@ -33,25 +45,61 @@
         <script type="application/ld+json">
         {
           "@context": "https://schema.org",
-          "@type": "Service",
-          "@id": "https://bmako.de/smarthome-beratung-bonn.html#service",
-          "name": "SmartHome Beratung Bonn",
-          "description": "SmartHome & IoT Beratung in Bonn: Heimautomatisierung herstellerunabhängig, datenschutzfreundlich und optional komplett ohne Cloud.",
-          "provider": {
-            "@id": "https://bmako.de/#person"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Bonn" },
-            { "@type": "City", "name": "Bad Godesberg" },
-            { "@type": "City", "name": "Siegburg" },
-            { "@type": "City", "name": "Köln" }
-          ],
-          "serviceType": "SmartHome Beratung",
-          "offers": {
-            "@type": "Offer",
-            "availability": "https://schema.org/InStock",
-            "areaServed": { "@type": "City", "name": "Bonn" }
-          }
+          "@graph": [
+            {
+              "@type": "Service",
+              "@id": "https://bmako.de/smarthome-beratung-bonn.html#service",
+              "name": "SmartHome Beratung Bonn",
+              "description": "SmartHome & IoT Beratung in Bonn: Heimautomatisierung herstellerunabhängig, datenschutzfreundlich und optional komplett ohne Cloud.",
+              "provider": {
+                "@type": "Person",
+                "@id": "https://bmako.de/#person",
+                "name": "Bartosz Makosch",
+                "url": "https://bmako.de/"
+              },
+              "areaServed": [
+                { "@type": "City", "name": "Bonn" },
+                { "@type": "City", "name": "Bad Godesberg" },
+                { "@type": "City", "name": "Siegburg" },
+                { "@type": "City", "name": "Köln" }
+              ],
+              "serviceType": "SmartHome Beratung",
+              "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock",
+                "areaServed": { "@type": "City", "name": "Bonn" }
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://bmako.de/smarthome-beratung-bonn.html#breadcrumb",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Start", "item": "https://bmako.de/" },
+                { "@type": "ListItem", "position": 2, "name": "SmartHome Bonn", "item": "https://bmako.de/smarthome-beratung-bonn.html" }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://bmako.de/smarthome-beratung-bonn.html#faq",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Muss ich alle Geräte neu kaufen?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Nein. Die meisten vorhandenen Smart-Geräte lassen sich in ein neues System integrieren. Ich schaue mir an, was Sie schon haben, und baue darauf auf." }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Funktioniert das auch ohne Internet?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Ja – genau das ist der Punkt. Lokale Systeme wie Home Assistant funktionieren auch dann weiter, wenn das Internet mal ausfällt. Ihre Automatisierungen laufen unabhängig." }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Ist das nicht sehr kompliziert zu bedienen?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Ich richte alles so ein, dass Ihre Familie es problemlos nutzen kann. Die Automatisierungen laufen im Hintergrund – Licht, Heizung, Rollläden reagieren einfach, ohne dass jemand eine App öffnen muss." }
+                }
+              ]
+            }
+          ]
         }
         </script>
 
@@ -61,9 +109,10 @@
         <link rel="stylesheet" href="css/components.css" />
     </head>
     <body>
+        <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
         <!-- Nav -->
-        <nav class="site-nav">
+        <nav class="site-nav" aria-label="Hauptnavigation">
             <a href="/" class="nav-logo">bmako</a>
             <a href="/#svc-apple">Apple</a>
             <a href="/#svc-ki">KI</a>
@@ -73,10 +122,10 @@
             <a href="/#contact">Kontakt</a>
         </nav>
 
-        <main>
+        <main id="main-content">
             <!-- Hero -->
             <section class="service-page-hero">
-                <div class="service-page-emoji">🏠</div>
+                <div class="service-page-emoji" aria-hidden="true">🏠</div>
                 <h1 class="service-page-title">SmartHome<br>in Bonn.</h1>
                 <p class="service-page-subtitle">Intelligent wohnen – ohne Abhängigkeit von der Cloud.</p>
             </section>
@@ -132,6 +181,13 @@
                     </details>
                 </div>
             </section>
+
+            <!-- Related services -->
+            <nav class="related-services" aria-label="Verwandte Leistungen">
+                <span class="related-label">Auch interessant</span>
+                <a href="apple-beratung-bonn.html">Apple &amp; HomeKit</a> ·
+                <a href="datenschutz-selfhosting.html">Datenschutz &amp; Selfhosting</a>
+            </nav>
         </main>
 
         <!-- Footer -->

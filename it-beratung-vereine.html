@@ -14,15 +14,27 @@
         <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
         <link rel="icon" href="favicon/favicon.ico" sizes="any" />
+        <link rel="manifest" href="favicon/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
 
         <!-- Open Graph -->
         <meta property="og:title" content="IT-Beratung für Vereine & Kleingewerbe Bonn" />
         <meta property="og:url" content="https://bmako.de/it-beratung-vereine.html" />
         <meta property="og:image" content="https://bmako.de/images/profile.jpeg" />
+        <meta property="og:image:width" content="768" />
+        <meta property="og:image:height" content="1024" />
+        <meta property="og:image:alt" content="Bartosz Makosch – IT-Berater aus Bonn" />
         <meta property="og:description" content="IT-Beratung für Vereine und Kleingewerbe in Bonn – professionelle IT zum fairen Preis. Persönlich und auf Augenhöhe." />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="de_DE" />
+        <meta property="og:site_name" content="Bartosz Makosch – IT-Beratung Bonn" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="IT-Beratung für Vereine & Kleingewerbe Bonn" />
+        <meta name="twitter:description" content="IT-Beratung für Vereine und Kleingewerbe in Bonn – professionelle IT zum fairen Preis. Persönlich und auf Augenhöhe." />
+        <meta name="twitter:image" content="https://bmako.de/images/profile.jpeg" />
+        <meta name="twitter:image:alt" content="Bartosz Makosch – IT-Berater aus Bonn" />
 
         <!-- Canonical -->
         <link rel="canonical" href="https://bmako.de/it-beratung-vereine.html" />
@@ -33,25 +45,61 @@
         <script type="application/ld+json">
         {
           "@context": "https://schema.org",
-          "@type": "Service",
-          "@id": "https://bmako.de/it-beratung-vereine.html#service",
-          "name": "IT-Beratung für Vereine und Kleingewerbe Bonn",
-          "description": "Persönliche IT-Beratung für Vereine und Kleingewerbe in Bonn: Microsoft 365, Website, Cloud-Speicher, Datenschutz und laufende Betreuung – erschwinglich und auf Augenhöhe.",
-          "provider": {
-            "@id": "https://bmako.de/#person"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Bonn" },
-            { "@type": "City", "name": "Bad Godesberg" },
-            { "@type": "City", "name": "Siegburg" },
-            { "@type": "City", "name": "Köln" }
-          ],
-          "serviceType": "IT-Beratung für Vereine und Kleingewerbe",
-          "offers": {
-            "@type": "Offer",
-            "availability": "https://schema.org/InStock",
-            "areaServed": { "@type": "City", "name": "Bonn" }
-          }
+          "@graph": [
+            {
+              "@type": "Service",
+              "@id": "https://bmako.de/it-beratung-vereine.html#service",
+              "name": "IT-Beratung für Vereine und Kleingewerbe Bonn",
+              "description": "Persönliche IT-Beratung für Vereine und Kleingewerbe in Bonn: Microsoft 365, Website, Cloud-Speicher, Datenschutz und laufende Betreuung – erschwinglich und auf Augenhöhe.",
+              "provider": {
+                "@type": "Person",
+                "@id": "https://bmako.de/#person",
+                "name": "Bartosz Makosch",
+                "url": "https://bmako.de/"
+              },
+              "areaServed": [
+                { "@type": "City", "name": "Bonn" },
+                { "@type": "City", "name": "Bad Godesberg" },
+                { "@type": "City", "name": "Siegburg" },
+                { "@type": "City", "name": "Köln" }
+              ],
+              "serviceType": "IT-Beratung für Vereine und Kleingewerbe",
+              "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock",
+                "areaServed": { "@type": "City", "name": "Bonn" }
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://bmako.de/it-beratung-vereine.html#breadcrumb",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Start", "item": "https://bmako.de/" },
+                { "@type": "ListItem", "position": 2, "name": "IT-Beratung für Vereine Bonn", "item": "https://bmako.de/it-beratung-vereine.html" }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://bmako.de/it-beratung-vereine.html#faq",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Wir haben kein IT-Budget. Geht das trotzdem?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Oft ja. Viele Tools sind für gemeinnützige Organisationen kostenlos – zum Beispiel Microsoft 365 Nonprofit oder Google Workspace for Nonprofits. Ich helfe Ihnen, diese Programme zu finden, zu beantragen und einzurichten." }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Unser Vorstand ist nicht technikaffin.",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Das ist völlig normal und kein Problem. Ich erkläre alles geduldig und auf Augenhöhe. Und ich richte die Dinge so ein, dass sie einfach zu bedienen sind – auch ohne IT-Kenntnisse." }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Können Sie auch langfristig unterstützen?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Ja, gerne. Nach der Einrichtung bleibe ich als Ansprechpartner für den laufenden Betrieb, Updates und neue Fragen. Sie erreichen mich direkt – nicht über ein Ticketsystem." }
+                }
+              ]
+            }
+          ]
         }
         </script>
 
@@ -61,9 +109,10 @@
         <link rel="stylesheet" href="css/components.css" />
     </head>
     <body>
+        <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
         <!-- Nav -->
-        <nav class="site-nav">
+        <nav class="site-nav" aria-label="Hauptnavigation">
             <a href="/" class="nav-logo">bmako</a>
             <a href="/#svc-apple">Apple</a>
             <a href="/#svc-ki">KI</a>
@@ -73,12 +122,12 @@
             <a href="/#contact">Kontakt</a>
         </nav>
 
-        <main>
+        <main id="main-content">
             <!-- Hero -->
             <section class="service-page-hero">
-                <div class="service-page-emoji">🤝</div>
-                <h1 class="service-page-title">IT für Vereine<br>und Kleingewerbe.</h1>
-                <p class="service-page-subtitle">Auf Augenhöhe. Ohne Enterprise-Overhead.</p>
+                <div class="service-page-emoji" aria-hidden="true">🤝</div>
+                <h1 class="service-page-title">IT-Beratung für<br>Vereine in Bonn.</h1>
+                <p class="service-page-subtitle">Für Vereine und Kleingewerbe – auf Augenhöhe, ohne Enterprise-Overhead.</p>
             </section>
 
             <!-- Content -->
@@ -131,6 +180,13 @@
                     </details>
                 </div>
             </section>
+
+            <!-- Related services -->
+            <nav class="related-services" aria-label="Verwandte Leistungen">
+                <span class="related-label">Auch interessant</span>
+                <a href="microsoft-365-bonn.html">Microsoft 365</a> ·
+                <a href="workshops-bonn.html">Workshops &amp; Schulungen</a>
+            </nav>
         </main>
 
         <!-- Footer -->

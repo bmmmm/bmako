@@ -14,15 +14,27 @@
         <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
         <link rel="icon" href="favicon/favicon.ico" sizes="any" />
+        <link rel="manifest" href="favicon/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
 
         <!-- Open Graph -->
         <meta property="og:title" content="KI-Beratung Bonn | Workshops, Potenzialanalyse & Automatisierung" />
         <meta property="og:url" content="https://bmako.de/ki-beratung-bonn.html" />
         <meta property="og:image" content="https://bmako.de/images/profile.jpeg" />
+        <meta property="og:image:width" content="768" />
+        <meta property="og:image:height" content="1024" />
+        <meta property="og:image:alt" content="Bartosz Makosch – IT-Berater aus Bonn" />
         <meta property="og:description" content="KI-Beratung in Bonn – Workshops, Potenzialanalyse und Automatisierung. Unabhängig und praxisnah, ohne Vendor Lock-in." />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="de_DE" />
+        <meta property="og:site_name" content="Bartosz Makosch – IT-Beratung Bonn" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="KI-Beratung Bonn | Workshops, Potenzialanalyse & Automatisierung" />
+        <meta name="twitter:description" content="KI-Beratung in Bonn – Workshops, Potenzialanalyse und Automatisierung. Unabhängig und praxisnah, ohne Vendor Lock-in." />
+        <meta name="twitter:image" content="https://bmako.de/images/profile.jpeg" />
+        <meta name="twitter:image:alt" content="Bartosz Makosch – IT-Berater aus Bonn" />
 
         <!-- Canonical -->
         <link rel="canonical" href="https://bmako.de/ki-beratung-bonn.html" />
@@ -33,25 +45,61 @@
         <script type="application/ld+json">
         {
           "@context": "https://schema.org",
-          "@type": "Service",
-          "@id": "https://bmako.de/ki-beratung-bonn.html#service",
-          "name": "KI-Beratung Bonn",
-          "description": "Unabhängige KI-Beratung in Bonn: Potenzialanalyse, Workshops, Workflow-Automatisierung und Prompt Engineering – praxisnah und ohne Vendor Lock-in.",
-          "provider": {
-            "@id": "https://bmako.de/#person"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Bonn" },
-            { "@type": "City", "name": "Bad Godesberg" },
-            { "@type": "City", "name": "Siegburg" },
-            { "@type": "City", "name": "Köln" }
-          ],
-          "serviceType": "KI-Beratung",
-          "offers": {
-            "@type": "Offer",
-            "availability": "https://schema.org/InStock",
-            "areaServed": { "@type": "City", "name": "Bonn" }
-          }
+          "@graph": [
+            {
+              "@type": "Service",
+              "@id": "https://bmako.de/ki-beratung-bonn.html#service",
+              "name": "KI-Beratung Bonn",
+              "description": "Unabhängige KI-Beratung in Bonn: Potenzialanalyse, Workshops, Workflow-Automatisierung und Prompt Engineering – praxisnah und ohne Vendor Lock-in.",
+              "provider": {
+                "@type": "Person",
+                "@id": "https://bmako.de/#person",
+                "name": "Bartosz Makosch",
+                "url": "https://bmako.de/"
+              },
+              "areaServed": [
+                { "@type": "City", "name": "Bonn" },
+                { "@type": "City", "name": "Bad Godesberg" },
+                { "@type": "City", "name": "Siegburg" },
+                { "@type": "City", "name": "Köln" }
+              ],
+              "serviceType": "KI-Beratung",
+              "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock",
+                "areaServed": { "@type": "City", "name": "Bonn" }
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://bmako.de/ki-beratung-bonn.html#breadcrumb",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Start", "item": "https://bmako.de/" },
+                { "@type": "ListItem", "position": 2, "name": "KI-Beratung Bonn", "item": "https://bmako.de/ki-beratung-bonn.html" }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://bmako.de/ki-beratung-bonn.html#faq",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Brauche ich technisches Vorwissen?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Nein. Ich erkläre alles praxisnah und auf Augenhöhe. Meine Beratung richtet sich bewusst auch an Menschen, die mit KI bisher wenig Berührung hatten." }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Für wen ist eine KI-Beratung sinnvoll?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Für kleine und mittlere Unternehmen, Vereine und Privatpersonen, die KI sinnvoll einsetzen wollen – nicht als Selbstzweck, sondern um Zeit zu sparen und bessere Ergebnisse zu erzielen." }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Welche KI-Tools empfehlen Sie?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Das hängt vom Einsatzzweck ab. Ich bin unabhängig und habe keine Partnerschaften mit Anbietern. Sie bekommen eine ehrliche Empfehlung – auch wenn die lautet, dass Sie gerade kein KI-Tool brauchen." }
+                }
+              ]
+            }
+          ]
         }
         </script>
 
@@ -61,9 +109,10 @@
         <link rel="stylesheet" href="css/components.css" />
     </head>
     <body>
+        <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
         <!-- Nav -->
-        <nav class="site-nav">
+        <nav class="site-nav" aria-label="Hauptnavigation">
             <a href="/" class="nav-logo">bmako</a>
             <a href="/#svc-apple">Apple</a>
             <a href="/#svc-ki">KI</a>
@@ -73,10 +122,10 @@
             <a href="/#contact">Kontakt</a>
         </nav>
 
-        <main>
+        <main id="main-content">
             <!-- Hero -->
             <section class="service-page-hero">
-                <div class="service-page-emoji">🤖</div>
+                <div class="service-page-emoji" aria-hidden="true">🤖</div>
                 <h1 class="service-page-title">KI-Beratung<br>in Bonn.</h1>
                 <p class="service-page-subtitle">Künstliche Intelligenz verstehen und praktisch nutzen – ohne Hype, ohne Buzzwords.</p>
             </section>
@@ -132,6 +181,13 @@
                     </details>
                 </div>
             </section>
+
+            <!-- Related services -->
+            <nav class="related-services" aria-label="Verwandte Leistungen">
+                <span class="related-label">Auch interessant</span>
+                <a href="workshops-bonn.html">Workshops &amp; Schulungen</a> ·
+                <a href="microsoft-365-bonn.html">Microsoft 365</a>
+            </nav>
         </main>
 
         <!-- Footer -->

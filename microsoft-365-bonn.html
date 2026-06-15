@@ -14,15 +14,27 @@
         <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png" />
         <link rel="icon" href="favicon/favicon.ico" sizes="any" />
+        <link rel="manifest" href="favicon/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
 
         <!-- Open Graph -->
         <meta property="og:title" content="Microsoft 365 Beratung Bonn | Teams, SharePoint & Azure" />
         <meta property="og:url" content="https://bmako.de/microsoft-365-bonn.html" />
         <meta property="og:image" content="https://bmako.de/images/profile.jpeg" />
+        <meta property="og:image:width" content="768" />
+        <meta property="og:image:height" content="1024" />
+        <meta property="og:image:alt" content="Bartosz Makosch – IT-Berater aus Bonn" />
         <meta property="og:description" content="Microsoft 365 Beratung in Bonn – Teams, SharePoint, Azure und Exchange sauber aufgesetzt. Persönlich und unabhängig." />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="de_DE" />
+        <meta property="og:site_name" content="Bartosz Makosch – IT-Beratung Bonn" />
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Microsoft 365 Beratung Bonn | Teams, SharePoint & Azure" />
+        <meta name="twitter:description" content="Microsoft 365 Beratung in Bonn – Teams, SharePoint, Azure und Exchange sauber aufgesetzt. Persönlich und unabhängig." />
+        <meta name="twitter:image" content="https://bmako.de/images/profile.jpeg" />
+        <meta name="twitter:image:alt" content="Bartosz Makosch – IT-Berater aus Bonn" />
 
         <!-- Canonical -->
         <link rel="canonical" href="https://bmako.de/microsoft-365-bonn.html" />
@@ -33,25 +45,61 @@
         <script type="application/ld+json">
         {
           "@context": "https://schema.org",
-          "@type": "Service",
-          "@id": "https://bmako.de/microsoft-365-bonn.html#service",
-          "name": "Microsoft 365 Beratung Bonn",
-          "description": "Microsoft Cloud Beratung in Bonn: Teams, SharePoint, Azure und Exchange Online – sauber aufgesetzt für Vereine und kleine Unternehmen.",
-          "provider": {
-            "@id": "https://bmako.de/#person"
-          },
-          "areaServed": [
-            { "@type": "City", "name": "Bonn" },
-            { "@type": "City", "name": "Bad Godesberg" },
-            { "@type": "City", "name": "Siegburg" },
-            { "@type": "City", "name": "Köln" }
-          ],
-          "serviceType": "Microsoft Cloud Beratung",
-          "offers": {
-            "@type": "Offer",
-            "availability": "https://schema.org/InStock",
-            "areaServed": { "@type": "City", "name": "Bonn" }
-          }
+          "@graph": [
+            {
+              "@type": "Service",
+              "@id": "https://bmako.de/microsoft-365-bonn.html#service",
+              "name": "Microsoft 365 Beratung Bonn",
+              "description": "Microsoft Cloud Beratung in Bonn: Teams, SharePoint, Azure und Exchange Online – sauber aufgesetzt für Vereine und kleine Unternehmen.",
+              "provider": {
+                "@type": "Person",
+                "@id": "https://bmako.de/#person",
+                "name": "Bartosz Makosch",
+                "url": "https://bmako.de/"
+              },
+              "areaServed": [
+                { "@type": "City", "name": "Bonn" },
+                { "@type": "City", "name": "Bad Godesberg" },
+                { "@type": "City", "name": "Siegburg" },
+                { "@type": "City", "name": "Köln" }
+              ],
+              "serviceType": "Microsoft Cloud Beratung",
+              "offers": {
+                "@type": "Offer",
+                "availability": "https://schema.org/InStock",
+                "areaServed": { "@type": "City", "name": "Bonn" }
+              }
+            },
+            {
+              "@type": "BreadcrumbList",
+              "@id": "https://bmako.de/microsoft-365-bonn.html#breadcrumb",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Start", "item": "https://bmako.de/" },
+                { "@type": "ListItem", "position": 2, "name": "Microsoft 365 Bonn", "item": "https://bmako.de/microsoft-365-bonn.html" }
+              ]
+            },
+            {
+              "@type": "FAQPage",
+              "@id": "https://bmako.de/microsoft-365-bonn.html#faq",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Wir nutzen schon Microsoft 365, aber es läuft nicht rund.",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Das höre ich oft. Viele Umgebungen sind über die Zeit gewachsen, ohne dass jemand die Struktur im Blick hatte. Ich schaue mir Ihre aktuelle Konfiguration an, identifiziere die Schwachstellen und bringe alles in Ordnung." }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Geht das auch für einen kleinen Verein?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Gerade für Vereine! Microsoft bietet gemeinnützigen Organisationen kostenlose oder stark vergünstigte M365-Lizenzen an. Ich helfe Ihnen, diese zu beantragen und sinnvoll einzurichten." }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Können Sie auch Schulungen durchführen?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Ja, sehr gerne. Ich biete praxisnahe Workshops an – vor Ort bei Ihnen oder per Videocall. Keine PowerPoint-Schlachten, sondern echtes Arbeiten mit den Tools." }
+                }
+              ]
+            }
+          ]
         }
         </script>
 
@@ -61,9 +109,10 @@
         <link rel="stylesheet" href="css/components.css" />
     </head>
     <body>
+        <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
 
         <!-- Nav -->
-        <nav class="site-nav">
+        <nav class="site-nav" aria-label="Hauptnavigation">
             <a href="/" class="nav-logo">bmako</a>
             <a href="/#svc-apple">Apple</a>
             <a href="/#svc-ki">KI</a>
@@ -73,10 +122,10 @@
             <a href="/#contact">Kontakt</a>
         </nav>
 
-        <main>
+        <main id="main-content">
             <!-- Hero -->
             <section class="service-page-hero">
-                <div class="service-page-emoji">☁️</div>
+                <div class="service-page-emoji" aria-hidden="true">☁️</div>
                 <h1 class="service-page-title">Microsoft 365<br>in Bonn.</h1>
                 <p class="service-page-subtitle">Sauber aufgesetzt, verständlich erklärt – damit Ihre Cloud wirklich funktioniert.</p>
             </section>
@@ -132,6 +181,13 @@
                     </details>
                 </div>
             </section>
+
+            <!-- Related services -->
+            <nav class="related-services" aria-label="Verwandte Leistungen">
+                <span class="related-label">Auch interessant</span>
+                <a href="datenschutz-selfhosting.html">Datenschutz &amp; Selfhosting</a> ·
+                <a href="it-beratung-vereine.html">IT für Vereine</a>
+            </nav>
         </main>
 
         <!-- Footer -->
