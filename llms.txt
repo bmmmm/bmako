@@ -1,20 +1,21 @@
 # Bartosz Makosch – Tech-Beratung
 
-> Bartosz Makosch ist ein unabhaengiger IT-Berater und Ingenieur (M.Sc.) in Bonn, Deutschland. Er bietet persoenliche technische Betreuung fuer kleine und mittlere Unternehmen, Vereine und Privatpersonen. Kein Callcenter, ein Ansprechpartner fuer alles.
+> Bartosz Makosch ist ein unabhängiger IT-Berater und Ingenieur (M.Sc.) in Bonn, Deutschland. Er bietet persönliche technische Betreuung für kleine und mittlere Unternehmen, Vereine und Privatpersonen. Kein Callcenter, ein Ansprechpartner für alles.
 
 ## Dienstleistungen
 
-- [Apple-Oekosystem](https://bmako.de/#services-section): Einrichtung, Integration und laufender Support fuer Apple-Geraete und -Dienste.
-- [KI-Beratung](https://bmako.de/#services-section): Unabhaengige Beratung zu KI-Tools, Workflow-Automatisierung und Potenzialanalyse.
-- [Workshops & Schulungen](https://bmako.de/#services-section): Praxisnahe Schulungen zu KI, Cloud und Datenschutz fuer Teams.
-- [Microsoft Cloud](https://bmako.de/#services-section): Teams, SharePoint, Azure – Einrichtung und Betreuung.
-- [Datenschutz & Selfhosting](https://bmako.de/#services-section): Selfhosting-Loesungen und unabhaengige Datenschutzberatung.
-- [SmartHome & IoT](https://bmako.de/#services-section): Herstellerunabhaengige SmartHome-Systeme, optional ohne Cloud.
+- [Apple-Ökosystem](https://bmako.de/apple-beratung-bonn.html): Einrichtung, Integration und laufender Support für Apple-Geräte und -Dienste.
+- [KI-Beratung](https://bmako.de/ki-beratung-bonn.html): Unabhängige Beratung zu KI-Tools, Workflow-Automatisierung und Potenzialanalyse.
+- [Microsoft Cloud](https://bmako.de/microsoft-365-bonn.html): Teams, SharePoint, Azure – Einrichtung und Betreuung.
+- [Datenschutz & Selfhosting](https://bmako.de/datenschutz-selfhosting.html): Selfhosting-Lösungen und unabhängige Datenschutzberatung.
+- [SmartHome & IoT](https://bmako.de/smarthome-beratung-bonn.html): Herstellerunabhängige SmartHome-Systeme, optional ohne Cloud.
+- [IT-Beratung für Vereine](https://bmako.de/it-beratung-vereine.html): IT-Betreuung und Digitalisierung für Vereine und Kleingewerbe.
+- [Workshops & Schulungen](https://bmako.de/workshops-bonn.html): Praxisnahe Schulungen zu KI, Cloud und Datenschutz für Teams.
 
 ## Referenzen
 
-- [bitcircus101.de](https://bitcircus101.de): Gruendung & Leitung Hackspace Bonn
-- [vfcd.org](https://vfcd.org): Website & IT fuer einen gemeinnuetzigen Verein
+- [bitcircus101.de](https://bitcircus101.de): Gründung & Leitung Hackspace Bonn
+- [vfcd.org](https://vfcd.org): Website & IT für einen gemeinnützigen Verein
 - IT-Migration eines Vereins zu Microsoft Teams und Azure
 - Smart-Home-System von Grund auf geplant und umgesetzt
 - Kassensystem mit Zahlungsterminal in Betrieb genommen
@@ -24,12 +25,19 @@
 - Name: Bartosz Makosch
 - Standort: Bonn, Deutschland
 - Abschluss: M.Sc. Embedded Systems & Medizintechnik, Hochschule Mannheim; B.Sc. Medizintechnik, Hochschule Mannheim
-- Sprachen: Deutsch, Englisch, Franzoesisch
-- Kontakt: [Kontaktseite](https://bmako.de/#contact-section)
+- Sprachen: Deutsch, Englisch, Französisch
+- Kontakt: [Kontakt](https://bmako.de/#contact)
 - LinkedIn: [linkedin.com/in/bartosz-makosch](https://de.linkedin.com/in/bartosz-makosch)
 
 ## Seiten
 
-- [Hauptseite](https://bmako.de/): Vollstaendige Website mit allen Informationen
+- [Startseite](https://bmako.de/): Übersicht aller Leistungen, Über mich, Referenzen und Kontakt
+- [Apple-Beratung Bonn](https://bmako.de/apple-beratung-bonn.html): Mac, iPhone, iPad und iCloud – Einrichtung, Migration, Support
+- [KI-Beratung Bonn](https://bmako.de/ki-beratung-bonn.html): KI-Tools, Automatisierung und Potenzialanalyse
+- [Microsoft 365 Bonn](https://bmako.de/microsoft-365-bonn.html): Teams, SharePoint und Azure
+- [Datenschutz & Selfhosting](https://bmako.de/datenschutz-selfhosting.html): Datenhoheit und Privatsphäre
+- [SmartHome Bonn](https://bmako.de/smarthome-beratung-bonn.html): Heimautomatisierung, optional ohne Cloud
+- [IT-Beratung für Vereine](https://bmako.de/it-beratung-vereine.html): IT und Digitalisierung für Vereine und Kleingewerbe
+- [Workshops Bonn](https://bmako.de/workshops-bonn.html): Schulungen zu KI, Cloud und Datenschutz
 - [Impressum](https://bmako.de/impressum.html): Impressum und Kontaktdaten
-- [Datenschutz](https://bmako.de/datenschutz.html): Datenschutzerklaerung
+- [Datenschutz](https://bmako.de/datenschutz.html): Datenschutzerklärung
