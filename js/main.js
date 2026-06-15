@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('#footer-year, .footer-year').forEach(function (el) { el.textContent = year; });
 
     // iMessage button visibility is handled by <html class="is-apple"> + CSS
-    // (set by inline script in <head>) — no JS toggling needed here.
+    // (set by js/theme.js in <head>) — no JS toggling needed here.
 
     // Initialize all features
     // Smooth-scrolling for anchor links is handled by CSS (scroll-behavior + scroll-padding-top in base.css).
