@@ -1,0 +1,41 @@
+name: pages
+
+# Deploys an allowlisted copy of the site instead of the repo root. With the
+# legacy "deploy from branch /" source every tracked file was a public URL —
+# scripts/, .project-stage, .claudeignore included. New site files must be
+# added to the list below or they are not published.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Assemble site from the allowlist
+        run: |
+          set -euo pipefail
+          mkdir _site
+          cp ./*.html llms.txt robots.txt sitemap.xml _site/
+          cp -R css data favicon images js _site/
+          test -f _site/index.html
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
